@@ -15,5 +15,5 @@ export const getUserInfo = async () => {
     console.error('Failed to fetch user: ', error);
   }
 
-  return data.user ?? null;
+  return data?.user ?? null;
 };

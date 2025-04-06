@@ -1,4 +1,3 @@
-'use client';
 import { NAVER_CONFIG } from '../config';
 import { createClient } from './client';
 

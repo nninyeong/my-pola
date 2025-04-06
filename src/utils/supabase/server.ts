@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 

@@ -1,17 +1,13 @@
 'use client';
-
-import { handleKakaoSignIn } from '@/utils/supabase/singIn';
-import { useSearchParams } from 'next/navigation';
+import { handleAuthCallback } from '@/utils/auth/authCallbackhandler';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const social = searchParams.get('social');
+  const router = useRouter();
 
   useEffect(() => {
-    if (social === 'kakao') {
-      handleKakaoSignIn();
-    }
+    handleAuthCallback(router);
   }, []);
 
   return <div>홈</div>;
