@@ -13,7 +13,7 @@ export const useGeolocation = () => {
   const getCurrentPosition = () => {
     const options = {
       enableHighAccuracy: true,
-      timeout: 10000,
+      timeout: 50000,
       maximumAge: 0,
     };
 
@@ -29,6 +29,13 @@ export const useGeolocation = () => {
 
     const error = (error: GeolocationPositionError) => {
       console.error('위치 정보 에러:', error);
+
+      if (error.code === 2) {
+        // POSITION_UNAVAILABLE
+        setTimeout(() => {
+          getCurrentPosition();
+        }, 2000); // 2초 후 재시도
+      }
 
       setError({ message: error.message });
       setIsLoading(false);
