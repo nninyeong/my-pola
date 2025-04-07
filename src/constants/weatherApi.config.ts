@@ -12,6 +12,6 @@ export const WEATHER_API_CONFIG = {
 } as const;
 
 export const DEFAULT_WEATHER_POSITION = {
-  latitude: 37.5665,
-  longitude: 126.978,
+  latitude: 34.8799083,
+  longitude: 129.05562775,
 } as const;
