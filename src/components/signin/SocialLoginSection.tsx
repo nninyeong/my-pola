@@ -5,7 +5,7 @@ import SocialLoginButton from './SocialLoginButton ';
 const SocialLoginSection = () => {
   return (
     <section className='flex flex-col items-center gap-[8px]'>
-      <div className='flex items-center w-full'>
+      <div className='flex items-center w-[333px]'>
         <div className='flex-grow h-[0.8px] bg-black' />
         <p className='px-2 text-[10px] font-pretendard whitespace-nowrap leading-[35px]'>간편가입 및 로그인</p>
         <div className='flex-grow h-[0.8px] bg-black' />

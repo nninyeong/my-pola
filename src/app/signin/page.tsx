@@ -1,4 +1,4 @@
-import SignInHeader from '@/components/signin/signinHeader';
+import SignInHeader from '@/components/signin/SignInHeader';
 import SocialLoginSection from '@/components/signin/SocialLoginSection';
 
 const SigInPage = () => {
