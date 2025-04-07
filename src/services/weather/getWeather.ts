@@ -5,7 +5,6 @@ import { WeatherResponse } from '@/types/weather.types';
 import { convertLatLngToGrid } from '@/utils/convertCoordinate';
 
 export const fetchWeather = async (position: Position): Promise<WeatherResponse> => {
-  console.log('fetchWeather 호출, position: ', position);
   try {
     const { nx: convertedNx, ny: convertedNy } = convertLatLngToGrid(position.latitude, position.longitude);
     const nx = convertedNx.toString();
