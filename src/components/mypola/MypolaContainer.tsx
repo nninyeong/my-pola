@@ -9,11 +9,12 @@ import { QUERY_KEYS } from '@/hooks/queries/queryKeys';
 export default function MypolaContainer() {
   const { position, isLoading: isGeolocationLoading, permissionState } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
-  const queryClient = useQueryClient();
 
   useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: QUERY_KEYS.weather() });
-  }, [permissionState, queryClient]);
+    console.log('permissionState: ', permissionState);
+  }, [permissionState, position]);
+
+  console.log('MypolaContinaer 리렌더링');
 
   if (isGeolocationLoading || isWeatherLoading) {
     return <div>날씨 정보를 불러오는 중...</div>;
