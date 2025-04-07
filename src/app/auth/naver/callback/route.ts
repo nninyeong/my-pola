@@ -43,7 +43,9 @@ export async function GET(request: Request) {
   if (user) {
     const provider = user.app_metadata?.provider;
     if (provider === 'kakao') {
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/?social=${provider}`);
+      return NextResponse.redirect(
+        `${process.env.NEXT_PUBLIC_SITE_URL}/signin?error=social_conflict&provider=${provider}`,
+      );
     }
   } else {
     const { data: signUpData, error: signUpError } = await supabaseAdmin.auth.signUp({
