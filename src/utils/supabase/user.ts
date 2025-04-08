@@ -1,4 +1,4 @@
-import { createClient } from './server';
+import { createClient } from './client';
 
 export const getUserNickname = async (userId: string) => {
   const client = createClient();
