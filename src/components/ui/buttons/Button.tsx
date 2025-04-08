@@ -2,7 +2,7 @@ type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
-  size: 'small' | 'medium' | 'large';
+  size: 'small' | 'medium' | 'large' | 'xlarge';
   variant: 'primary' | 'secondary' | 'tertiary';
 };
 
@@ -32,19 +32,23 @@ export default function Button({ children, onClick, disabled = false, size, vari
 
 // TODO: 버튼 디자인시스템 확정 후 primary 제외 버튼 스타일들 추가
 const BUTTON_STYLES = {
+  'primary-xlarge': 'bg-primary-400 rounded-[10px] text-neutral-100 hover:text-neutral-100 active:bg-primary-500',
   'primary-large':
     'bg-primary-300 rounded-[10px] text-neutral-1100 hover:text-neutral-100 active:bg-primary-400 active:text-neutral-100',
   'primary-medium': 'bg-primary-300 rounded-[10px] text-neutral-100 active:bg-primary-400',
   'primary-small': 'bg-primary-300 rounded-[10px] text-neutral-100 active:bg-primary-400',
+  'secondary-xlarge': '',
   'secondary-large': '',
   'secondary-medium': '',
   'secondary-small': '',
+  'tertiary-xlarge': '',
   'tertiary-large': '',
   'tertiary-medium': '',
   'tertiary-small': '',
 } as const;
 
 const BUTTON_SIZES = {
+  xlarge: 'w-[335px] h-[53px] text-[20px]',
   large: 'w-[220px] h-[56px] text-[20px]',
   medium: 'w-[112px] h-[39px] text-[14px]',
   small: 'w-[86px] h-[34px] text-[12px]',

@@ -8,7 +8,7 @@ const BottomSheetContent = ({ children, onClick, label }: BottomSheetProps) => {
       <section className='flex mx-auto mb-[34px]'>
         <Button
           onClick={onClick}
-          size={'large'}
+          size={'xlarge'}
           variant={'primary'}
         >
           {label}
