@@ -22,10 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${pretendard.variable} antialiased font-pretendard`}>
+      <body className={`${pretendard.variable} antialiased flex flex-col relative font-pretendard`}>
         <QueryProvider>
           <Header />
-          {children}
+          <main className='px-[20px]'>{children}</main>
         </QueryProvider>
       </body>
     </html>
