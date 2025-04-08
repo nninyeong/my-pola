@@ -18,8 +18,8 @@ export default function MypolaContainer({ level, mileage }: MypolaContainerProps
   }
 
   return (
-    <div className='flex flex-col justify-around items-center h-[520px]'>
-      <div className='h-[400px]'>현재 날씨: {weather}</div>
+    <div className='flex flex-col justify-around items-center w-full h-full'>
+      <div className='h-[200px]'>현재 날씨: {weather}</div>
       <div>
         <p className='font-semibold text-neutral-1000 text-[20px] text-center mb-[32px]'>
           LEVEL. {level} {LEVEL_POLA_NAME[`level${level}` as keyof typeof LEVEL_POLA_NAME]}
