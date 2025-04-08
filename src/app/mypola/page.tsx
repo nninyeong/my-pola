@@ -11,8 +11,11 @@ export default async function page() {
         <span>{nickname}님의 폴라가</span>
         <span>성장하고 있어요!</span>
       </h1>
+      <MypolaContainer
+        level={level}
+        mileage={mileage}
+      />
       <FixedEllipseBackground />
-      <MypolaContainer />
     </div>
   );
 }
