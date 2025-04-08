@@ -2,6 +2,9 @@
 
 import { useWeather } from '@/hooks/queries/useWeather';
 import { useGeolocation } from '@/hooks/user/useGeolocation';
+import { useQueryClient } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import { QUERY_KEYS } from '@/hooks/queries/queryKeys';
 
 export default function MypolaContainer() {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
