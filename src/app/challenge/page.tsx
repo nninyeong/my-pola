@@ -6,7 +6,7 @@ import ChallengeComplete from '@/components/challenge/ChallengeComplete';
 import { useRouter } from 'next/navigation';
 
 const ChallengePage = () => {
-  const { open } = useBottomSheetStore();
+  const { close, open } = useBottomSheetStore();
   const router = useRouter();
   return (
     <div>
@@ -18,7 +18,10 @@ const ChallengePage = () => {
         바텀시트
       </Button>
       <BottomSheet
-        onClick={() => router.push('/mypola')}
+        onClick={() => {
+          close();
+          router.replace('/mypola');
+        }}
         label='마이폴라 바로가기'
       >
         <ChallengeComplete />
