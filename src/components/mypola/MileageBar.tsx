@@ -1,4 +1,4 @@
-import { MAX_MILEAGE } from '@/constants/level.config';
+import { MAX_MILEAGE } from '@/constants/levelInfo';
 
 type MileageBarProps = {
   mileage: number;
