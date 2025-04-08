@@ -1,17 +1,43 @@
-'use client';
-import { useAuthStatus } from '@/hooks/auth/useAuthStatus';
 import Link from 'next/link';
 
-const Navigation = () => {
-  const { isSignedIn } = useAuthStatus();
+type NavigationProps = {
+  isSignedIn: boolean;
+  toggleMenu: () => void;
+};
+
+type NavLink = {
+  href: string;
+  label: string;
+  className?: string;
+};
+
+const Navigation = ({ isSignedIn, toggleMenu }: NavigationProps) => {
+  const baseLinks: NavLink[] = [
+    { href: '/', label: '소개' },
+    { href: '/challenge', label: '데일리 챌린지' },
+    { href: '/mypola', label: '마이 폴라' },
+    { href: '/mypola/itemstore', label: '아이템 상점', className: 'desktop:hidden' },
+    { href: '/ranking', label: '랭킹' },
+  ];
+
+  const authLinks: NavLink[] = isSignedIn
+    ? [{ href: '/mypage', label: '마이페이지' }]
+    : [{ href: '/signin', label: '로그인' }];
+
+  const links = [...baseLinks, ...authLinks];
 
   return (
-    <nav>
-      <Link href={'/'}>소개</Link>
-      <Link href={'/challenge'}>챌린지</Link>
-      <Link href={'/mypola'}>마이 폴라 </Link>
-      <Link href={'/ranking'}>랭킹</Link>
-      {isSignedIn ? <Link href={'/mypage'}>마이페이지</Link> : <Link href={'/signin'}>로그인</Link>}
+    <nav className='flex flex-col font-pretendard font-semibold text-[18px] desktop:flex desktop:flex-row desktop:gap-[114px]'>
+      {links.map(({ href, label, className = '' }) => (
+        <Link
+          key={href}
+          href={href}
+          className={`flex items-center border-b h-[56px] pl-[49px] ${className} desktop:border-none desktop:pl-0 desktop:h-auto desktop:w-auto`}
+          onClick={toggleMenu}
+        >
+          {label}
+        </Link>
+      ))}
     </nav>
   );
 };
