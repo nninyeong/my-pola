@@ -1,6 +1,6 @@
 import MypolaContainer from '@/components/mypola/MypolaContainer';
 import FixedEllipseBackground from '@/components/background/FixedEllipseBackground';
-import { getCurrentUserData } from '@/utils/supabase/user';
+import { getCurrentUserData } from '@/utils/supabase/auth';
 
 export default async function page() {
   const { nickname, mileage, point, level } = await getCurrentUserData();
