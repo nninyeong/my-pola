@@ -1,6 +1,6 @@
 export default function FixedEllipseBackground() {
   return (
-    <div className='fixed inset-0 z-[-1] w-screen h-screen relative'>
+    <div className='fixed inset-0 z-[-10] w-screen h-screen'>
       <div className='w-[70px] h-[70px] flex-shrink-0 absolute top-0 right-[42px] bg-gradient-to-b from-[#EDF046] to-[rgba(240,233,70,0.15)] blur-[50px]'></div>
       <div className='w-[70px] h-[70px] flex-shrink-0 absolute top-[126px] left-[-15px] bg-gradient-to-b from-[#46F080] to-[rgba(70,240,138,0.15)] blur-[50px]'></div>
       <div className='w-[60px] h-[60px] flex-shrink-0 absolute right-[-18px] top-[232px] bg-gradient-to-b from-[#2671CA] to-[rgba(37,85,255,0.25)] blur-[50px]'></div>
