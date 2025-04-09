@@ -22,6 +22,7 @@ const ChallengePage = () => {
           close();
           router.replace('/mypola');
         }}
+        type='confirm'
         label='마이폴라 바로가기'
       >
         <ChallengeComplete />

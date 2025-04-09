@@ -5,13 +5,17 @@ import CancelIcon from '/public/assets/icons/CancelIcon.png';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
 import BottomSheetContent from './BottomSheetContent';
 
-export type BottomSheetProps = {
-  children: React.ReactNode;
-  onClick: () => void;
+export type ActionProps = {
   label: string;
+  onClick: () => void;
 };
 
-const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
+export type BottomSheetProps = {
+  children: React.ReactNode;
+  type: 'confirm' | 'choice';
+} & ActionProps;
+
+const BottomSheet = ({ children, onClick, type, label }: BottomSheetProps) => {
   const { isOpen, close } = useBottomSheetStore();
 
   if (!isOpen) return null;
@@ -34,7 +38,7 @@ const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
             className='cursor-pointer'
           />
         </section>
-        <BottomSheetContent {...{ children, onClick, label }} />
+        <BottomSheetContent {...{ children, onClick, type, label }} />
       </div>
     </div>
   );
