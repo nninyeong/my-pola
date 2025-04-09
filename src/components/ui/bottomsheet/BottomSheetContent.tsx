@@ -7,7 +7,7 @@ const BottomSheetContent = ({ children, onClick, type, label }: BottomSheetProps
   return (
     <>
       <section>{children}</section>
-      <section className='flex mx-auto mb-[34px]'>
+      <section className='flex mx-auto mb-[32px]'>
         {type === 'confirm' ? <ConfirmButton {...{ onClick, label }} /> : <ChoiceButtons {...{ onClick, label }} />}
       </section>
     </>
