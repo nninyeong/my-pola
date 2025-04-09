@@ -13,7 +13,6 @@ export type BottomSheetProps = {
 
 const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
   const { isOpen, close } = useBottomSheetStore();
-  const props = { children, onClick, label };
 
   if (!isOpen) return null;
 
@@ -35,7 +34,7 @@ const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
             className='cursor-pointer'
           />
         </section>
-        <BottomSheetContent {...props} />
+        <BottomSheetContent {...{ children, onClick, label }} />
       </div>
     </div>
   );
