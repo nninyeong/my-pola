@@ -2,11 +2,14 @@
 
 import { useWeather } from '@/hooks/queries/useWeather';
 import { useGeolocation } from '@/hooks/user/useGeolocation';
-import { useQueryClient } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import { QUERY_KEYS } from '@/hooks/queries/queryKeys';
+import MileageBar from './MileageBar';
+import { LEVEL_POLA_NAME } from '@/constants/levelInfo';
+type MypolaContainerProps = {
+  level: number;
+  mileage: number;
+};
 
-export default function MypolaContainer() {
+export default function MypolaContainer({ level, mileage }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -15,8 +18,17 @@ export default function MypolaContainer() {
   }
 
   return (
-    <div>
-      <h1>현재 날씨: {weather}</h1>
+    <div className='flex flex-col justify-around items-center w-full h-full'>
+      <div className='h-[200px]'>현재 날씨: {weather}</div>
+      <div>
+        <p className='font-semibold text-neutral-1000 text-[20px] text-center mb-[32px]'>
+          LEVEL. {level} {LEVEL_POLA_NAME[`level${level}` as keyof typeof LEVEL_POLA_NAME]}
+        </p>
+        <MileageBar
+          mileage={mileage}
+          level={level}
+        />
+      </div>
     </div>
   );
 }
