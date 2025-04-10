@@ -5,7 +5,7 @@ export const MAX_MILEAGE = {
 };
 
 export const LEVEL_POLA_NAME = {
-  level1: '아기 북극곰',
-  level2: '어린이 북극곰',
-  level3: '북극곰',
+  level1: '또또 폴라',
+  level2: '차차 폴라',
+  level3: '모모 폴라',
 };
