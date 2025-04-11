@@ -1,19 +1,8 @@
-'use client';
-
 import Ranking from '@/components/ranking/Ranking';
-import { RankingTap } from '@/types/ranking.types';
-import { useState } from 'react';
+import { getCurrentUserData } from '@/utils/supabase/auth';
 
-export default function page() {
-  const [currentTap, setCurrentTap] = useState<RankingTap>('total');
+export default async function page() {
+  const currentUser = await getCurrentUserData();
 
-  const toggleTap = () => {
-    setCurrentTap((prev) => (prev === 'total' ? 'friend' : 'total'));
-  };
-
-  return (
-    <div>
-      <Ranking currentTap={currentTap} />
-    </div>
-  );
+  return <Ranking currentUser={currentUser} />;
 }
