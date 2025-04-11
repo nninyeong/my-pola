@@ -1,7 +1,8 @@
 import { getClientUser } from '../../utils/supabase/authClient';
 import { createClient } from '../../utils/supabase/client';
+import { UserType } from '@/types/user.types';
 
-export const getRankingData = async () => {
+export const getRankingData = async (): Promise<UserType[] | null> => {
   const client = createClient();
 
   const userInfo = getClientUser();
@@ -22,6 +23,5 @@ export const getRankingData = async () => {
     return null;
   }
 
-  console.log('ranking data', data);
   return data;
 };
