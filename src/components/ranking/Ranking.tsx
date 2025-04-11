@@ -27,7 +27,7 @@ export default function Ranking({ currentUser }: RankingProps) {
   const proccessedRanking = processRankingData(ranking, currentUser.id);
 
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <div className='flex flex-row w-full'>
         <RankingTab
           currentTab={currentTab}
@@ -43,7 +43,7 @@ export default function Ranking({ currentUser }: RankingProps) {
       {proccessedRanking.map((user, index) => (
         <RankingItem
           key={`user-ranking-${index}`}
-          rank={user.actualRank}
+          rank={user.rank}
           currentUser={currentUser}
           rankUser={user}
         />
