@@ -11,9 +11,10 @@ type RankingProps = {
   currentUser: UserType;
 };
 
+const MAX_RANKING_COUNT = 10;
+
 export default function Ranking({ currentUser }: RankingProps) {
   const [currentTab, setCurrentTab] = useState<RankingTabType>('total');
-
   const { data: ranking, isLoading, error } = useRanking();
 
   const toggleTab = () => {
@@ -23,6 +24,20 @@ export default function Ranking({ currentUser }: RankingProps) {
   if (isLoading) return <div>랭킹 정보를 불러오는 중...</div>;
   if (error) return <div>랭킹 정보를 불러오는데 실패했습니다.</div>;
   if (!ranking) return <div>랭킹 정보가 없습니다.</div>;
+
+  const proccessedRanking = ranking.slice(0, MAX_RANKING_COUNT).map((user, index) => ({
+    ...user,
+    actualRank: index + 1,
+  }));
+
+  const currentUserRank = ranking.findIndex((user) => user.id === currentUser.id);
+
+  if (currentUserRank !== -1 && currentUserRank >= MAX_RANKING_COUNT) {
+    proccessedRanking.push({
+      ...ranking[currentUserRank],
+      actualRank: currentUserRank + 1,
+    });
+  }
 
   return (
     <div>
@@ -38,10 +53,10 @@ export default function Ranking({ currentUser }: RankingProps) {
           onClick={toggleTab}
         />
       </div>
-      {ranking.map((user, rank) => (
+      {proccessedRanking.map((user, index) => (
         <RankingItem
-          key={`user-ranking-${rank}`}
-          rank={rank + 1}
+          key={`user-ranking-${index}`}
+          rank={user.actualRank}
           currentUser={currentUser}
           rankUser={user}
         />
