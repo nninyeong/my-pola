@@ -6,12 +6,11 @@ import RankingItem from './RankingItem';
 import { useState } from 'react';
 import { UserType } from '@/types/user.types';
 import RankingTab from './RankingTab';
+import { processRankingData } from '@/services/ranking/processRankingData';
 
 type RankingProps = {
   currentUser: UserType;
 };
-
-const MAX_RANKING_COUNT = 10;
 
 export default function Ranking({ currentUser }: RankingProps) {
   const [currentTab, setCurrentTab] = useState<RankingTabType>('total');
@@ -25,19 +24,7 @@ export default function Ranking({ currentUser }: RankingProps) {
   if (error) return <div>랭킹 정보를 불러오는데 실패했습니다.</div>;
   if (!ranking) return <div>랭킹 정보가 없습니다.</div>;
 
-  const proccessedRanking = ranking.slice(0, MAX_RANKING_COUNT).map((user, index) => ({
-    ...user,
-    actualRank: index + 1,
-  }));
-
-  const currentUserRank = ranking.findIndex((user) => user.id === currentUser.id);
-
-  if (currentUserRank !== -1 && currentUserRank >= MAX_RANKING_COUNT) {
-    proccessedRanking.push({
-      ...ranking[currentUserRank],
-      actualRank: currentUserRank + 1,
-    });
-  }
+  const proccessedRanking = processRankingData(ranking, currentUser.id);
 
   return (
     <div>
