@@ -18,7 +18,7 @@ const Modal = ({ children }: ModalProps) => {
         className='fixed inset-0 bg-black/30 z-0'
       />
       <div className='flex flex-col justify-between top-[274px] fixed bg-white w-[304px] h-[185px] rounded-[20px] z-1 py-[16px] px-[17px]'>
-        <section className='flex justify-end'>
+        <div className='flex justify-end'>
           <Image
             src={CancelIcon}
             width={16}
@@ -27,7 +27,7 @@ const Modal = ({ children }: ModalProps) => {
             onClick={close}
             className='cursor-pointer'
           />
-        </section>
+        </div>
         <section className='flex flex-grow justify-center items-center'>{children}</section>
       </div>
     </div>
