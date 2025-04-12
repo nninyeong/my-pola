@@ -1,7 +1,7 @@
 import { ActionProps } from '../bottomsheet/BottomSheet';
 import Button from './Button';
 
-const ConfirmButtons = ({ onClick, label }: ActionProps) => {
+const ConfirmButton = ({ onClick, label }: ActionProps) => {
   return (
     <Button
       onClick={onClick}
@@ -13,4 +13,4 @@ const ConfirmButtons = ({ onClick, label }: ActionProps) => {
   );
 };
 
-export default ConfirmButtons;
+export default ConfirmButton;

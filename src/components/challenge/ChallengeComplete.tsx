@@ -6,7 +6,7 @@ const ChallengeComplete = () => {
     <div className='flex flex-col items-center font-pretendard text-center'>
       <h1 className=' font-semibold text-[20px] mb-[8px]'>
         챌린지 미션을 완료하고
-        <br />총 NN 마일리지 획득했어요!
+        <br />총 100 마일리지 획득했어요!
       </h1>
       <Image
         src={ChallengeCompleteImage}

@@ -3,7 +3,7 @@ import Button from './Button';
 import { ActionProps } from '../bottomsheet/BottomSheet';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
 
-const ChoiceButtons = ({ onClick, label }: ActionProps) => {
+const BottomSheetChoiceButtons = ({ onClick, label }: ActionProps) => {
   const { close } = useBottomSheetStore();
 
   return (
@@ -26,4 +26,4 @@ const ChoiceButtons = ({ onClick, label }: ActionProps) => {
   );
 };
 
-export default ChoiceButtons;
+export default BottomSheetChoiceButtons;
