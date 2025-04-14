@@ -6,7 +6,6 @@ import RankingItem from './RankingItem';
 import { useState } from 'react';
 import { UserType } from '@/types/user.types';
 import RankingTab from './RankingTab';
-import { processRankingData } from '@/services/ranking/processRankingData';
 
 type RankingProps = {
   currentUser: UserType;
@@ -14,17 +13,11 @@ type RankingProps = {
 
 export default function Ranking({ currentUser }: RankingProps) {
   const [currentTab, setCurrentTab] = useState<RankingTabType>('total');
-  const { data: ranking, isLoading, error } = useRanking();
+  const { data: ranking, isLoading, isError, error } = useRanking(currentUser.id);
 
   const toggleTab = () => {
     setCurrentTab((prev) => (prev === 'total' ? 'friend' : 'total'));
   };
-
-  if (isLoading) return <div>랭킹 정보를 불러오는 중...</div>;
-  if (error) return <div>랭킹 정보를 불러오는데 실패했습니다.</div>;
-  if (!ranking) return <div>랭킹 정보가 없습니다.</div>;
-
-  const proccessedRanking = processRankingData(ranking, currentUser.id);
 
   return (
     <div className='flex flex-col items-center'>
@@ -40,7 +33,9 @@ export default function Ranking({ currentUser }: RankingProps) {
           onClick={toggleTab}
         />
       </div>
-      {proccessedRanking.map((user, index) => (
+      {isLoading && <div>랭킹 정보를 불러오는 중...</div>}
+      {isError && <div>{error.message}</div>}
+      {ranking?.processed.map((user, index) => (
         <RankingItem
           key={`user-ranking-${index}`}
           rank={user.rank}
