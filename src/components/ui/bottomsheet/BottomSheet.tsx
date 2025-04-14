@@ -8,10 +8,11 @@ import BottomSheetContent from './BottomSheetContent';
 export type BottomSheetProps = {
   children: React.ReactNode;
   onClick: () => void;
+  disabled: boolean | null;
   label: string;
 };
 
-const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
+const BottomSheet = ({ children, onClick, disabled, label }: BottomSheetProps) => {
   const { isOpen, close } = useBottomSheetStore();
 
   if (!isOpen) return null;
@@ -34,7 +35,7 @@ const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
             className='cursor-pointer'
           />
         </section>
-        <BottomSheetContent {...{ children, onClick, label }} />
+        <BottomSheetContent {...{ children, onClick, disabled, label }} />
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import ChallengeCard from './ChallengeCard';
-import { challenge } from '@/types/challenge.types';
+import { Challenge } from '@/types/challenge.types';
 
 type ChallengeListProps = {
-  challenges: challenge[] | null;
+  challenges: Challenge[] | null;
   onSelectChallenge: (id: number) => void;
 };
 
