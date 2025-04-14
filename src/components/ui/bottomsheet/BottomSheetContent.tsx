@@ -1,18 +1,18 @@
-import Button from '../buttons/Button';
+'use client';
 import { BottomSheetProps } from './BottomSheet';
+import ConfirmButton from '../buttons/ConfirmButton';
+import BottomSheetChoiceButtons from '../buttons/BottomSheetChoiceButtons';
 
-const BottomSheetContent = ({ children, onClick, label }: BottomSheetProps) => {
+const BottomSheetContent = ({ children, onClick, type, label }: BottomSheetProps) => {
   return (
     <>
       <section>{children}</section>
-      <section className='flex mx-auto mb-[34px]'>
-        <Button
-          onClick={onClick}
-          size={'xlarge'}
-          variant={'primary'}
-        >
-          {label}
-        </Button>
+      <section className='flex mx-auto mb-[32px]'>
+        {type === 'confirm' ? (
+          <ConfirmButton {...{ onClick, label }} />
+        ) : (
+          <BottomSheetChoiceButtons {...{ onClick, label }} />
+        )}
       </section>
     </>
   );

@@ -5,13 +5,17 @@ import CancelIcon from '/public/assets/icons/CancelIcon.png';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
 import BottomSheetContent from './BottomSheetContent';
 
-export type BottomSheetProps = {
-  children: React.ReactNode;
-  onClick: () => void;
+export type ActionProps = {
   label: string;
+  onClick: () => void;
 };
 
-const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
+export type BottomSheetProps = {
+  children: React.ReactNode;
+  type: 'confirm' | 'choice';
+} & ActionProps;
+
+const BottomSheet = ({ children, onClick, type, label }: BottomSheetProps) => {
   const { isOpen, close } = useBottomSheetStore();
 
   if (!isOpen) return null;
@@ -24,7 +28,7 @@ const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
       />
 
       <div className='flex flex-col justify-between fixed bottom-0 left-0 bg-white w-full h-[502px] rounded-t-3xl z-1 py-[20px] px-[19px] transition-transform duration-300'>
-        <section className='flex justify-end'>
+        <div className='flex justify-end'>
           <Image
             src={CancelIcon}
             width={21}
@@ -33,8 +37,8 @@ const BottomSheet = ({ children, onClick, label }: BottomSheetProps) => {
             onClick={close}
             className='cursor-pointer'
           />
-        </section>
-        <BottomSheetContent {...{ children, onClick, label }} />
+        </div>
+        <BottomSheetContent {...{ children, onClick, type, label }} />
       </div>
     </div>
   );
