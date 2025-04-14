@@ -19,6 +19,8 @@ export default function Ranking({ currentUser }: RankingProps) {
     setCurrentTab((prev) => (prev === 'total' ? 'friend' : 'total'));
   };
 
+  const hasNoFriend = !currentUser.friends || currentUser.friends.length === 0;
+
   return (
     <div className='flex flex-col items-center'>
       <div className='flex flex-row w-full'>
@@ -35,14 +37,16 @@ export default function Ranking({ currentUser }: RankingProps) {
       </div>
       {isLoading && <div>랭킹 정보를 불러오는 중...</div>}
       {isError && <div>{error.message}</div>}
-      {ranking?.processed.map((user, index) => (
-        <RankingItem
-          key={`user-ranking-${index}`}
-          rank={user.rank}
-          currentUser={currentUser}
-          rankUser={user}
-        />
-      ))}
+      {currentTab === 'total' &&
+        ranking?.processed.map((user, index) => (
+          <RankingItem
+            key={`user-ranking-${index}`}
+            rank={user.rank}
+            currentUser={currentUser}
+            rankUser={user}
+          />
+        ))}
+      {currentTab === 'friend' && hasNoFriend && <div>추가된 친구가 없습니다.</div>}
     </div>
   );
 }
