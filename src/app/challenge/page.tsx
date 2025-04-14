@@ -1,5 +1,4 @@
 'use client';
-import ChallengeComplete from '@/components/challenge/ChallengeComplete';
 import ChallengeHeader from '@/components/challenge/ChallengeHeader';
 import ChallengeList from '@/components/challenge/ChallengeList';
 import BottomSheet from '@/components/ui/bottomsheet/BottomSheet';
@@ -14,6 +13,7 @@ import useBottomSheetStore from '@/stores/useBottomSheetStore';
 import { Challenge, CurrentChallenge } from '@/types/challenge.types';
 import { isSameDate } from '@/utils/date';
 import { useEffect, useState } from 'react';
+import ChallengeDetail from '@/components/challenge/ChallengeDetail';
 
 const ChallengePage = () => {
   const { close } = useBottomSheetStore();
@@ -64,21 +64,18 @@ const ChallengePage = () => {
 
   return (
     <>
-      <div className='flex flex-col'>
-        <ChallengeHeader todoChallenge={todoChallenge} />
-        <ChallengeList
-          challenges={challenges}
-          onSelectChallenge={onSelectChallenge}
-        />
-      </div>
+      <ChallengeHeader todoChallenge={todoChallenge} />
+      <ChallengeList
+        challenges={challenges}
+        onSelectChallenge={onSelectChallenge}
+      />
       <BottomSheet
         onClick={handleConfirmChallenge}
         disabled={!!todoChallenge}
         type='confirm'
         label={`챌린지 등록`}
       >
-        {/* TODO: 해당 챌린지로 변경할 것 */}
-        {selectedChallenge && <ChallengeComplete />}
+        {selectedChallenge && <ChallengeDetail {...selectedChallenge} />}
       </BottomSheet>
     </>
   );

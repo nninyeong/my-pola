@@ -3,10 +3,10 @@
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
 import React from 'react';
 
-import { challenge } from '@/types/challenge.types';
+import { Challenge } from '@/types/challenge.types';
 
 type ChallengeCardProps = {
-  challenge: challenge;
+  challenge: Challenge;
   onSelectChallenge: (id: number) => void;
 };
 

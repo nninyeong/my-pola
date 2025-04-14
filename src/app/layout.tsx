@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${pretendard.variable} antialiased flex flex-col relative min-h-screen h-full font-pretendard`}>
         <QueryProvider>
           <Header />
-          <main className='flex-1 px-[20px] flex flex-col h-full'>{children}</main>
+          <main className='flex-1 px-[20px] flex flex-col h-full pt-[81px] desktop:mt-0'>{children}</main>
         </QueryProvider>
       </body>
     </html>

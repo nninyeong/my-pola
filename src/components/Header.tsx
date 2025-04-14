@@ -9,7 +9,7 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className='relative desktop:flex desktop:justify-around desktop:items-center z-10'>
+    <header className='relative desktop:flex desktop:justify-around desktop:items-center z-10 w-full'>
       {isMenuOpen && (
         <div
           onClick={toggleMenu}
@@ -19,7 +19,7 @@ const Header = () => {
 
       <div
         onClick={toggleMenu}
-        className={`flex justify-end pt-[48px] pr-[21px] desktop:hidden z-5`}
+        className={`fixed right-0 pt-[48px] pr-[21px] desktop:hidden z-5`}
       >
         <Image
           src={MenuIcon}

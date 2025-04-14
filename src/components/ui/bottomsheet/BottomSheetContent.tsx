@@ -7,7 +7,7 @@ const BottomSheetContent = ({ children, onClick, disabled, type, label }: Bottom
   return (
     <>
       <section>{children}</section>
-      <section className='flex mx-auto mb-[32px]'>
+      <section className='flex mx-auto mb-[22px] mt-[10px]'>
         {type === 'confirm' ? (
           <ConfirmButton {...{ onClick, label, disabled }} />
         ) : (

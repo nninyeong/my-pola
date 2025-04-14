@@ -1,4 +1,4 @@
-import { Challenge, CurrentChallenge } from '@/types/challenge.types';
+import { Challenge } from '@/types/challenge.types';
 import { getUserInfo } from '@/utils/supabase/authClient';
 import { createClient } from '@/utils/supabase/client';
 import { redirect } from 'next/navigation';
@@ -30,6 +30,21 @@ export const fetchCurrentChallenge = async () => {
 
   if (error) {
     console.error('오늘의 챌린지 데이터를 불러오는데 실패했습니다.', error);
+    return null;
+  }
+  return data;
+};
+
+export const fetchCompletedChallenge = async () => {
+  const client = createClient();
+
+  const user = await getUserInfo();
+  if (!user) return null;
+
+  const { data, error } = await client.from('users').select('done_challenge_id').eq('id', user.id).maybeSingle();
+
+  if (error) {
+    console.error('완료한 챌린지 데이터를 불러오는데 실패했습니다.', error);
     return null;
   }
   return data;
@@ -67,6 +82,30 @@ export const resetDailyChallenge = async () => {
     .from('users')
     .update({ current_challenge_id: null, challenge_updated_at: null, done_challenge_id: null })
     .eq('id', user.id);
+
+  if (error) {
+    console.error('챌린지 데이터를 업데이트하는데 실패했습니다.', error);
+  }
+};
+
+export const updatedoneChallenge = async (id: number) => {
+  const client = createClient();
+
+  const user = await getUserInfo();
+  if (!user) {
+    return redirect('/signin');
+  }
+
+  const { data: userData, error: fetchError } = await client.from('users').select('mileage').eq('id', user.id).single();
+
+  if (fetchError || !userData) {
+    console.error('유저 정보를 가져오는데 실패했습니다.', fetchError);
+    return;
+  }
+
+  const newMileage = userData.mileage + 100;
+
+  const { error } = await client.from('users').update({ done_challenge_id: id, mileage: newMileage }).eq('id', user.id);
 
   if (error) {
     console.error('챌린지 데이터를 업데이트하는데 실패했습니다.', error);

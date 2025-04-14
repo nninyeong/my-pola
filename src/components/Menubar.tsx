@@ -32,6 +32,9 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     desktop:h-[80px]
     desktop:justify-center
     desktop:shadow-none
+    desktop:bg-white/30
+    desktop:fixed
+
   `}
     >
       <MenubarTitle
