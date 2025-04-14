@@ -74,6 +74,7 @@ const ChallengePage = () => {
       <BottomSheet
         onClick={handleConfirmChallenge}
         disabled={!!todoChallenge}
+        type='confirm'
         label={`챌린지 등록`}
       >
         {/* TODO: 해당 챌린지로 변경할 것 */}

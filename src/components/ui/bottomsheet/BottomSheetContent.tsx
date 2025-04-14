@@ -2,6 +2,7 @@
 import { BottomSheetProps } from './BottomSheet';
 import ConfirmButton from '../buttons/ConfirmButton';
 import BottomSheetChoiceButtons from '../buttons/BottomSheetChoiceButtons';
+
 const BottomSheetContent = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
   return (
     <>
