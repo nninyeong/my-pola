@@ -1,12 +1,8 @@
+import { MAX_RANKING_COUNT } from '@/constants/ranking';
+import { RankingUserType } from '@/types/ranking.types';
 import { UserType } from '@/types/user.types';
 
-export type RankingUserType = UserType & {
-  rank: number;
-};
-
-const MAX_RANKING_COUNT = 11;
-
-export const processRankingData = (ranking: UserType[], currentUserId: string): RankingUserType[] => {
+export const processRankingDataForTotal = (ranking: UserType[], currentUserId: string): RankingUserType[] => {
   const topRanking = ranking.slice(0, MAX_RANKING_COUNT).map((user, index) => ({
     ...user,
     rank: index + 1,

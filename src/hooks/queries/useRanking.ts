@@ -1,16 +1,11 @@
-import { getRankingData } from '@/services/ranking/getRankingData';
 import { useQuery } from '@tanstack/react-query';
 import { QUERY_KEYS } from './queryKeys';
 import { UserType } from '@/types/user.types';
-import { processRankingData } from '@/services/ranking/processRankingData';
+import { getRankingWithProcessedData } from '@/services/ranking/getProcessedRanking';
 
-export const useRanking = (currentUserId: string) => {
+export const useRanking = (currentUser: UserType) => {
   return useQuery({
     queryKey: QUERY_KEYS.ranking(),
-    queryFn: getRankingData,
-    select: (data: UserType[]) => ({
-      original: data,
-      processed: processRankingData(data, currentUserId),
-    }),
+    queryFn: () => getRankingWithProcessedData(currentUser),
   });
 };
