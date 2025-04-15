@@ -19,7 +19,33 @@ export default function Ranking({ currentUser }: RankingProps) {
     setCurrentTab((prev) => (prev === 'total' ? 'friend' : 'total'));
   };
 
-  const hasNoFriend = !ranking?.rankInFriends || ranking.rankInFriends.length === 0;
+  const renderRankingList = () => {
+    if (isLoading) return <div>랭킹 정보를 불러오는 중...</div>;
+    if (isError) return <div>{error.message}</div>;
+
+    if (currentTab === 'friend') {
+      const hasNoFriend = !ranking?.rankInFriends || ranking.rankInFriends.length === 0;
+      if (hasNoFriend) return <div>추가된 친구가 없습니다.</div>;
+
+      return ranking?.rankInFriends.map((user, index) => (
+        <RankingItem
+          key={`user-ranking-${index}`}
+          rank={user.rank}
+          currentUser={currentUser}
+          rankUser={user}
+        />
+      ));
+    }
+
+    return ranking?.rankInTotal.map((user, index) => (
+      <RankingItem
+        key={`user-ranking-${index}`}
+        rank={user.rank}
+        currentUser={currentUser}
+        rankUser={user}
+      />
+    ));
+  };
 
   return (
     <div className='flex flex-col items-center'>
@@ -35,28 +61,7 @@ export default function Ranking({ currentUser }: RankingProps) {
           onClick={toggleTab}
         />
       </div>
-      {isLoading && <div>랭킹 정보를 불러오는 중...</div>}
-      {isError && <div>{error.message}</div>}
-      {currentTab === 'total' &&
-        ranking?.rankInTotal.map((user, index) => (
-          <RankingItem
-            key={`user-ranking-${index}`}
-            rank={user.rank}
-            currentUser={currentUser}
-            rankUser={user}
-          />
-        ))}
-      {currentTab === 'friend' && hasNoFriend && <div>추가된 친구가 없습니다.</div>}
-      {currentTab === 'friend' &&
-        !hasNoFriend &&
-        ranking?.rankInFriends.map((user, index) => (
-          <RankingItem
-            key={`user-ranking-${index}`}
-            rank={user.rank}
-            currentUser={currentUser}
-            rankUser={user}
-          />
-        ))}
+      {renderRankingList()}
     </div>
   );
 }
