@@ -13,13 +13,13 @@ type RankingProps = {
 
 export default function Ranking({ currentUser }: RankingProps) {
   const [currentTab, setCurrentTab] = useState<RankingTabType>('total');
-  const { data: ranking, isLoading, isError, error } = useRanking(currentUser.id);
+  const { data: ranking, isLoading, isError, error } = useRanking(currentUser);
 
   const toggleTab = () => {
     setCurrentTab((prev) => (prev === 'total' ? 'friend' : 'total'));
   };
 
-  const hasNoFriend = !currentUser.friends || currentUser.friends.length === 0;
+  const hasNoFriend = !ranking?.rankInFriends || ranking.rankInFriends.length === 0;
 
   return (
     <div className='flex flex-col items-center'>
@@ -38,7 +38,7 @@ export default function Ranking({ currentUser }: RankingProps) {
       {isLoading && <div>랭킹 정보를 불러오는 중...</div>}
       {isError && <div>{error.message}</div>}
       {currentTab === 'total' &&
-        ranking?.processed.map((user, index) => (
+        ranking?.rankInTotal.map((user, index) => (
           <RankingItem
             key={`user-ranking-${index}`}
             rank={user.rank}
@@ -47,6 +47,16 @@ export default function Ranking({ currentUser }: RankingProps) {
           />
         ))}
       {currentTab === 'friend' && hasNoFriend && <div>추가된 친구가 없습니다.</div>}
+      {currentTab === 'friend' &&
+        !hasNoFriend &&
+        ranking?.rankInFriends.map((user, index) => (
+          <RankingItem
+            key={`user-ranking-${index}`}
+            rank={user.rank}
+            currentUser={currentUser}
+            rankUser={user}
+          />
+        ))}
     </div>
   );
 }
