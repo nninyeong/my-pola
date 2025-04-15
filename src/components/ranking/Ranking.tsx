@@ -13,10 +13,38 @@ type RankingProps = {
 
 export default function Ranking({ currentUser }: RankingProps) {
   const [currentTab, setCurrentTab] = useState<RankingTabType>('total');
-  const { data: ranking, isLoading, isError, error } = useRanking(currentUser.id);
+  const { data: ranking, isLoading, isError, error } = useRanking(currentUser);
 
   const toggleTab = () => {
     setCurrentTab((prev) => (prev === 'total' ? 'friend' : 'total'));
+  };
+
+  const renderRankingList = () => {
+    if (isLoading) return <div>랭킹 정보를 불러오는 중...</div>;
+    if (isError) return <div>{error.message}</div>;
+
+    if (currentTab === 'friend') {
+      const hasNoFriend = !ranking?.rankInFriends || ranking.rankInFriends.length === 0;
+      if (hasNoFriend) return <div>추가된 친구가 없습니다.</div>;
+
+      return ranking?.rankInFriends.map((user, index) => (
+        <RankingItem
+          key={`user-ranking-${index}`}
+          rank={user.rank}
+          currentUser={currentUser}
+          rankUser={user}
+        />
+      ));
+    }
+
+    return ranking?.rankInTotal.map((user, index) => (
+      <RankingItem
+        key={`user-ranking-${index}`}
+        rank={user.rank}
+        currentUser={currentUser}
+        rankUser={user}
+      />
+    ));
   };
 
   return (
@@ -33,16 +61,7 @@ export default function Ranking({ currentUser }: RankingProps) {
           onClick={toggleTab}
         />
       </div>
-      {isLoading && <div>랭킹 정보를 불러오는 중...</div>}
-      {isError && <div>{error.message}</div>}
-      {ranking?.processed.map((user, index) => (
-        <RankingItem
-          key={`user-ranking-${index}`}
-          rank={user.rank}
-          currentUser={currentUser}
-          rankUser={user}
-        />
-      ))}
+      {renderRankingList()}
     </div>
   );
 }
