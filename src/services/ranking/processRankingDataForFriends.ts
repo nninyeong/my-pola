@@ -8,6 +8,8 @@ export const processRankingDataForFriends = async (
   currentUser: UserType,
 ): Promise<RankingUserType[]> => {
   const friends = await getUserFriends(currentUser.id);
+  if (!friends || friends.length === 0) return [];
+
   const friendIds = new Set([currentUser.id, ...friends.map((friend) => friend.followee_id)]);
   const TOP_DISPLAY_COUNT = MAX_RANKING_COUNT - 1;
 
