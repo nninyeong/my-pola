@@ -37,6 +37,9 @@ const config: Config = {
           10: 'rgba(51, 51, 51, 0.1)',
         },
         success: {},
+        weather: {
+          802: '#FFF08C',
+        },
       },
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
