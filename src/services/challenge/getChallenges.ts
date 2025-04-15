@@ -47,7 +47,7 @@ export const fetchCompletedChallenge = async () => {
     console.error('완료한 챌린지 데이터를 불러오는데 실패했습니다.', error);
     return null;
   }
-  return data;
+  return data?.done_challenge_id;
 };
 
 export const updateCurrentChallenge = async (id: number) => {
