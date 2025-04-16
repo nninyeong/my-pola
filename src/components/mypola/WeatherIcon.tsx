@@ -21,7 +21,7 @@ export default function WeatherIcon({ weather, className }: WeatherIconProps) {
       alt={weather}
       width={120}
       height={120}
-      className={`${className}`}
+      className={`${className} w-[120px] h-[120px]`}
     />
   );
 }
