@@ -4,36 +4,27 @@ import ChallengeComplete from '@/components/challenge/ChallengeComplete';
 import CarbonEmissionResult from '@/components/challenge/proof/CarbonEmissionResult';
 import ChallengeProofHeader from '@/components/challenge/proof/ChallengeProofHeader';
 import BottomSheet from '@/components/ui/bottomsheet/BottomSheet';
-import { fetchCurrentChallenge, updatedoneChallenge } from '@/services/challenge/getChallenges';
+import useChallenge from '@/hooks/queries/useChallenge';
+import { updatedoneChallenge } from '@/services/challenge/updateChallenges';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
-import { Challenge, CurrentChallenge } from '@/types/challenge.types';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 const ChallengeProofPage = () => {
   const { close } = useBottomSheetStore();
-  const [todoChallenge, setTodoChallenge] = useState<Challenge | null>(null);
+  const { data, isLoading } = useChallenge();
   const router = useRouter();
 
-  useEffect(() => {
-    const loadChallenges = async () => {
-      const currentChallengeData = (await fetchCurrentChallenge()) as CurrentChallenge | null;
-
-      setTodoChallenge(currentChallengeData?.current_challenge_id ?? null);
-    };
-
-    loadChallenges();
-  }, []);
-
   const handleCompleteChallenge = async () => {
-    await updatedoneChallenge(todoChallenge!.id);
+    await updatedoneChallenge(data!.todoChallenge!.id);
     close();
     router.replace('/mypola');
   };
+
+  if (isLoading || !data) return '로딩 중입니다..';
   return (
     <>
-      <ChallengeProofHeader todoChallenge={todoChallenge} />
-      <CarbonEmissionResult todoChallenge={todoChallenge} />
+      <ChallengeProofHeader todoChallenge={data?.todoChallenge} />
+      <CarbonEmissionResult todoChallenge={data?.todoChallenge} />
 
       <BottomSheet
         onClick={handleCompleteChallenge}
