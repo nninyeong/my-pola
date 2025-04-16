@@ -23,11 +23,12 @@ const WEATHER_COLOR_MAP = {
 export default function MypolaContainer({ level, mileage, usernickname }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
+  const testWeather = isWeatherLoading ? weather : 'snowy';
 
   return (
     <div className='flex flex-col justify-between items-center w-[314px] h-full pb-[82px] mx-auto'>
       <div
-        className={`fixed top-[-150px] w-full h-[514px] z-[-9] rounded-b-full ${WEATHER_COLOR_MAP[weather || 'sunny']}`}
+        className={`fixed top-[-150px] w-full h-[514px] z-[-9] rounded-b-full ${WEATHER_COLOR_MAP[testWeather || 'sunny']}`}
       ></div>
       <div className='flex justify-between w-full'>
         <h1 className='flex flex-col justify-center items-start text-neutral-1000 font-semibold text-[20px] select-none'>
@@ -40,7 +41,7 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
             <div className='w-[60px] h-[60px] border-4 border-neutral-200 border-t-neutral-400 rounded-full animate-spin'></div>
           </div>
         ) : (
-          <WeatherIcon weather={weather || 'sunny'} />
+          <WeatherIcon weather={testWeather || 'sunny'} />
         )}
       </div>
       <div>

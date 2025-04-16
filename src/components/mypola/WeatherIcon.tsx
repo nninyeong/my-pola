@@ -16,12 +16,13 @@ const WEATHER_ICON_MAP = {
 
 export default function WeatherIcon({ weather, className }: WeatherIconProps) {
   return (
-    <Image
-      src={WEATHER_ICON_MAP[weather]}
-      alt={weather}
-      width={120}
-      height={120}
-      className={`${className} w-[120px] h-[120px]`}
-    />
+    <div className='relative w-[120px] h-[120px]'>
+      <Image
+        src={WEATHER_ICON_MAP[weather]}
+        alt={weather}
+        fill={true}
+        className={`${className} object-contain`}
+      />
+    </div>
   );
 }
