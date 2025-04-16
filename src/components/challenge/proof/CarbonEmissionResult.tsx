@@ -19,7 +19,7 @@ const CarbonEmissionResult = ({ todoChallenge }: CarbonEmissionResultProps) => {
           <p className='text-[16px] font-medium text-[#4A4A68] leading-[35px] mb-[12px]'>
             내가 아낀 탄소를 확인해보세요!
           </p>
-          <h1 className='text-[32px] font-bold text-primary-400'>{todoChallenge?.carbon_emissions}</h1>
+          <h1 className='text-[32px] font-bold text-primary-400'>{todoChallenge?.carbon_emissions}g CO₂</h1>
           <Image
             src={WinGiftsImage}
             width={316}
