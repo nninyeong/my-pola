@@ -9,3 +9,7 @@ export type UserType = {
   items: null;
   id: string;
 };
+
+export type FolloweeUserType = {
+  followee_id: string;
+};
