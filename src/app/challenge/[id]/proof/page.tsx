@@ -5,20 +5,11 @@ import CarbonEmissionResult from '@/components/challenge/proof/CarbonEmissionRes
 import ChallengeProofHeader from '@/components/challenge/proof/ChallengeProofHeader';
 import BottomSheet from '@/components/ui/bottomsheet/BottomSheet';
 import useChallenge from '@/hooks/queries/useChallenge';
-import { updatedoneChallenge } from '@/services/challenge/updateChallenges';
-import useBottomSheetStore from '@/stores/useBottomSheetStore';
-import { useRouter } from 'next/navigation';
+import { useChallengeComplete } from '@/hooks/queries/useChallengeComplete';
 
 const ChallengeProofPage = () => {
-  const { close } = useBottomSheetStore();
   const { data, isLoading } = useChallenge();
-  const router = useRouter();
-
-  const handleCompleteChallenge = async () => {
-    await updatedoneChallenge(data!.todoChallenge!.id);
-    close();
-    router.replace('/mypola');
-  };
+  const { handleCompleteChallenge } = useChallengeComplete(data?.todoChallenge ?? null);
 
   if (isLoading || !data) return '로딩 중입니다..';
   return (

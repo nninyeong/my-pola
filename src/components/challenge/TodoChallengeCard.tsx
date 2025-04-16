@@ -1,10 +1,9 @@
 import { Challenge } from '@/types/challenge.types';
 import React from 'react';
 import Button from '../ui/buttons/Button';
-import { useRouter } from 'next/navigation';
-import { fetchCompletedChallenge } from '@/services/challenge/getChallenges';
-import useModalStore from '@/stores/useModalStore';
+
 import Modal from '../ui/modal/Modal';
+import { useChallengeProofCheck } from '@/hooks/queries/useChallengeProofCheck';
 
 type TodoChallengeCardProps = {
   todoChallenge: Challenge | null;
@@ -12,18 +11,8 @@ type TodoChallengeCardProps = {
 };
 
 const TodoChallengeCard = ({ todoChallenge, showProofButton }: TodoChallengeCardProps) => {
-  const { open } = useModalStore();
-  const router = useRouter();
+  const { handleChallengeProofCheck } = useChallengeProofCheck(todoChallenge ?? null);
 
-  const handleChallengeProofCheck = async () => {
-    const completedChallenge = await fetchCompletedChallenge();
-
-    if (!completedChallenge) {
-      router.push(`/challenge/${todoChallenge?.id}/proof`);
-    } else {
-      open();
-    }
-  };
   return (
     <>
       <div className='mt-[5px] w-[333px] h-[74px] px-[16px] py-[13px] border border-primary-400 rounded-[14px] shadow-custom bg-neutral-70'>
