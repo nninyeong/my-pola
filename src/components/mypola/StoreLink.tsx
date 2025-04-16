@@ -10,7 +10,7 @@ export default function StoreLink({ point }: StoreLinkProps) {
     <div className='flex justify-end items-center gap-[3px]'>
       <span className='text-primary-400 text-[16px] font-bold leading-[16px]'>{point}P</span>
       <Link
-        href='/mypola/itemstore'
+        href='/itemstore'
         title='아이템 상점'
       >
         <Image
