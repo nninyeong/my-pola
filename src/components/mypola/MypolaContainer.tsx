@@ -12,6 +12,14 @@ type MypolaContainerProps = {
   usernickname: string;
 };
 
+const WEATHER_COLOR_MAP = {
+  sunny: 'bg-weather-802',
+  cloudy: 'bg-weather-802',
+  gloomy: 'bg-neutral-200',
+  rainy: 'bg-primary-100',
+  snowy: 'bg-primary-100',
+};
+
 export default function MypolaContainer({ level, mileage, usernickname }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
@@ -22,6 +30,9 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
 
   return (
     <div className='flex flex-col justify-between items-center w-[314px] h-full pb-[82px] mx-auto'>
+      <div
+        className={`fixed top-[-150px] w-full h-[514px] z-[-9] rounded-b-full ${WEATHER_COLOR_MAP[weather || 'sunny']}`}
+      ></div>
       <div className='flex justify-between w-full'>
         <h1 className='flex flex-col justify-center items-start text-neutral-1000 font-semibold text-[20px] select-none'>
           <span>{usernickname}님의 폴라가</span>
