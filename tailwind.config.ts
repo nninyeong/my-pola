@@ -38,6 +38,9 @@ const config: Config = {
           10: 'rgba(51, 51, 51, 0.1)',
         },
         success: {},
+        weather: {
+          802: '#FFF08C',
+        },
       },
       boxShadow: {
         custom: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
