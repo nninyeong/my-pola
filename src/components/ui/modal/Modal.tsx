@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import CancelIcon from '/public/assets/icons/CancelIcon.png';
 import React from 'react';
