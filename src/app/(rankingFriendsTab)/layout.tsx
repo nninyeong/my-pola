@@ -1,4 +1,5 @@
 import RankingFriendsPageTab from '@/components/ranking/RankingFriendsPageTab';
+import FriendUrlCopyButton from '@/components/ui/buttons/FriendUrlCopyButton';
 import { getCurrentUserData } from '@/utils/supabase/auth';
 
 export default async function ChallengeLayout({ children }: { children: React.ReactNode }) {
@@ -16,6 +17,7 @@ export default async function ChallengeLayout({ children }: { children: React.Re
         </div>
         <main className='flex flex-col flex-1 gap-[50px]'>{children}</main>
       </div>
+      <FriendUrlCopyButton currentUserId={currentUser?.id} />
     </div>
   );
 }
