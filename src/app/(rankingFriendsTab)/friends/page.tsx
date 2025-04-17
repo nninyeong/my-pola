@@ -4,7 +4,7 @@ import Modal from '@/components/ui/modal/Modal';
 import { ADD_FRIEND_RESPONSE_MAP } from '@/constants/addFriendResponse';
 import { useEffect } from 'react';
 import useModalStore from '@/stores/useModalStore';
-
+import FriendsList from '@/components/ranking/FriendsList';
 export default function page({ searchParams }: { searchParams: { friendStatus?: string; friendName?: string } }) {
   const { friendStatus, friendName } = searchParams;
   const statusCode = friendStatus ? parseInt(friendStatus) : null;
@@ -18,7 +18,6 @@ export default function page({ searchParams }: { searchParams: { friendStatus?: 
 
   return (
     <div>
-      <h1>친구 목록</h1>
       {statusCode && statusCode in ADD_FRIEND_RESPONSE_MAP && (
         <Modal>
           <p>
@@ -27,6 +26,7 @@ export default function page({ searchParams }: { searchParams: { friendStatus?: 
           </p>
         </Modal>
       )}
+      <FriendsList />
     </div>
   );
 }
