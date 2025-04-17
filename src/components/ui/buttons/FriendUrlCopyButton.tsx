@@ -7,7 +7,13 @@ type FriendUrlCopyButtonProps = {
 };
 
 export default function FriendUrlCopyButton({ currentUserId }: FriendUrlCopyButtonProps) {
-  const handleCopyFriendUrl = () => {};
+  const handleCopyFriendUrl = () => {
+    const friendUrl = `${window.location.origin}/friend/add/${currentUserId}`;
+    navigator.clipboard.writeText(friendUrl);
+
+    // TODO: alert or 토스트 Or 모달 확인 필요
+    alert('친구 추가 URL이 복사되었습니다.');
+  };
 
   return (
     <button
