@@ -28,7 +28,7 @@ export default function FriendUrlCopyButton({ currentUserId }: FriendUrlCopyButt
         className='object-cover'
       />
       <p className='flex flex-col justify-center items-center text-[14px] font-semibold text-neutral-100'>
-        <span>'친구와 함께 탄소절감을 실천해보세요'</span>
+        <span>&apos;친구와 함께 탄소절감을 실천해보세요&apos;</span>
         <span>URL</span>
       </p>
     </button>

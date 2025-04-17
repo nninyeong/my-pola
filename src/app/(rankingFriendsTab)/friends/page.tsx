@@ -5,7 +5,8 @@ import { ADD_FRIEND_RESPONSE_MAP } from '@/constants/addFriendResponse';
 import { useEffect } from 'react';
 import useModalStore from '@/stores/useModalStore';
 import FriendsList from '@/components/ranking/FriendsList';
-export default function page({ searchParams }: { searchParams: { friendStatus?: string; friendName?: string } }) {
+
+export default function Page({ searchParams }: { searchParams: { friendStatus?: string; friendName?: string } }) {
   const { friendStatus, friendName } = searchParams;
   const statusCode = friendStatus ? parseInt(friendStatus) : null;
   const { open } = useModalStore();
