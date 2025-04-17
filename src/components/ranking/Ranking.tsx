@@ -49,12 +49,13 @@ export default function Ranking({ currentUser }: RankingProps) {
 
   return (
     <div className='flex flex-col items-center'>
-      <div className='flex flex-row w-full'>
+      <div className='flex flex-row w-full h-[14px] justify-start items-center gap-[4px] my-[7px]'>
         <RankingTab
           currentTab={currentTab}
           type='total'
           onClick={toggleTab}
         />
+        <span className='text-[10px] leading-[10px] font-medium text-neutral-1000'>|</span>
         <RankingTab
           currentTab={currentTab}
           type='friend'
