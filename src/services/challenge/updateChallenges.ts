@@ -1,11 +1,15 @@
 import { createClient } from '@/utils/supabase/client';
 import { getUserInfo } from '@/utils/supabase/authClient';
+import { useRouter } from 'next/navigation';
 
-export const updateCurrentChallenge = async (id: number) => {
+export const updateCurrentChallenge = async (id: number, router: ReturnType<typeof useRouter>) => {
   const client = createClient();
 
   const user = await getUserInfo();
-  if (!user) return null;
+  if (!user) {
+    alert('챌린지를 등록하려면 로그인이 필요합니다!');
+    return router.replace('/signin');
+  }
 
   const now = new Date().toISOString();
 
