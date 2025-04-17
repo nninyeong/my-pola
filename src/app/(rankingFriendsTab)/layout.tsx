@@ -1,5 +1,6 @@
+import RankingFriendsPageTab from '@/components/ranking/RankingFriendsPageTab';
 import { getCurrentUserData } from '@/utils/supabase/auth';
-import RankingFriendsPageTab from '@/components/ui/RankingFriendsPageTab';
+
 export default async function ChallengeLayout({ children }: { children: React.ReactNode }) {
   const currentUser = await getCurrentUserData();
 
