@@ -21,7 +21,7 @@ export default function Page({ searchParams }: { searchParams: { friendStatus?: 
     <div>
       {statusCode && statusCode in ADD_FRIEND_RESPONSE_MAP && (
         <Modal>
-          <p>
+          <p className='text-[16px] text-neutral-900 font-semibold leading-[16px]'>
             <span>{friendName}</span>
             {ADD_FRIEND_RESPONSE_MAP[statusCode as keyof typeof ADD_FRIEND_RESPONSE_MAP].message}
           </p>
