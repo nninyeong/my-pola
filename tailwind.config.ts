@@ -34,12 +34,16 @@ const config: Config = {
           800: '#606060',
           900: '#4a4a4a',
           1000: '#000000',
+          70: 'rgba(255, 255, 255, 0.73)',
           10: 'rgba(51, 51, 51, 0.1)',
         },
         success: {},
         weather: {
           802: '#FFF08C',
         },
+      },
+      boxShadow: {
+        custom: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
       },
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],

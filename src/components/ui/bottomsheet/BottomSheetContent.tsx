@@ -3,15 +3,15 @@ import { BottomSheetProps } from './BottomSheet';
 import ConfirmButton from '../buttons/ConfirmButton';
 import BottomSheetChoiceButtons from '../buttons/BottomSheetChoiceButtons';
 
-const BottomSheetContent = ({ children, onClick, type, label }: BottomSheetProps) => {
+const BottomSheetContent = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
   return (
     <>
       <section>{children}</section>
-      <section className='flex mx-auto mb-[32px]'>
+      <section className='flex mx-auto mb-[22px] mt-[10px]'>
         {type === 'confirm' ? (
-          <ConfirmButton {...{ onClick, label }} />
+          <ConfirmButton {...{ onClick, label, disabled }} />
         ) : (
-          <BottomSheetChoiceButtons {...{ onClick, label }} />
+          <BottomSheetChoiceButtons {...{ onClick, label, disabled }} />
         )}
       </section>
     </>

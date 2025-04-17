@@ -7,7 +7,8 @@ const protectedPaths = ['/mypola', '/ranking'];
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const isProtectedPath = protectedPaths.some((path) => pathname.startsWith(path));
+  const isChallengeProof = /^\/challenge\/[^/]+\/proof\/?$/.test(pathname);
+  const isProtectedPath = protectedPaths.some((path) => pathname.startsWith(path)) || isChallengeProof;
 
   if (!isProtectedPath) {
     return NextResponse.next();
@@ -29,5 +30,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/mypola/:path*', '/ranking/:path*'],
+  matcher: ['/mypola/:path*', '/ranking/:path*', '/challenge/:path*'],
 };

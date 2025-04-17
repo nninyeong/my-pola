@@ -15,7 +15,7 @@ const ChallengeComplete = () => {
         alt='미션 완료 이미지'
       />
       <h3 className='mt-[10px] font-medium mb-[18px]'>100 마일리지</h3>
-      <p className='font-medium text-[14px] text-[#4A4A4A] mb-[9px]'>
+      <p className='font-medium text-[14px] text-neutral-900 mb-[9px]'>
         획득한 마일리지는
         <br />
         마이폴라에서 확인 가능합니다.

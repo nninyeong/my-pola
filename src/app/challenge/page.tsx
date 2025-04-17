@@ -1,33 +1,35 @@
 'use client';
-import Button from '@/components/ui/buttons/Button';
-import useBottomSheetStore from '@/stores/useBottomSheetStore';
+import ChallengeHeader from '@/components/challenge/ChallengeHeader';
+import ChallengeList from '@/components/challenge/ChallengeList';
 import BottomSheet from '@/components/ui/bottomsheet/BottomSheet';
-import ChallengeComplete from '@/components/challenge/ChallengeComplete';
-import { useRouter } from 'next/navigation';
+import ChallengeDetail from '@/components/challenge/ChallengeDetail';
+import useChallenge from '@/hooks/queries/useChallenge';
+import { useChallengeSelect } from '@/hooks/queries/useChallengeSelect';
+import { useChallengeConfirm } from '@/hooks/queries/useChallengeConfirm';
 
 const ChallengePage = () => {
-  const { close, open } = useBottomSheetStore();
-  const router = useRouter();
+  const { data, isLoading } = useChallenge();
+  const { selectedChallenge, onSelectChallenge } = useChallengeSelect(data?.challenges ?? null);
+  const { handleConfirmChallenge } = useChallengeConfirm(selectedChallenge);
+
+  if (isLoading || !data) return '로딩 중입니다...';
+
   return (
-    <div>
-      <Button
-        onClick={open}
-        size='large'
-        variant='primary'
-      >
-        바텀시트
-      </Button>
+    <>
+      <ChallengeHeader todoChallenge={data.todoChallenge} />
+      <ChallengeList
+        challenges={data?.challenges}
+        onSelectChallenge={onSelectChallenge}
+      />
       <BottomSheet
-        onClick={() => {
-          close();
-          router.replace('/mypola');
-        }}
+        onClick={handleConfirmChallenge}
+        disabled={!!data?.todoChallenge}
         type='confirm'
-        label='마이폴라 바로가기'
+        label={`챌린지 등록`}
       >
-        <ChallengeComplete />
+        {selectedChallenge && <ChallengeDetail {...selectedChallenge} />}
       </BottomSheet>
-    </div>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import BottomSheetContent from './BottomSheetContent';
 export type ActionProps = {
   label: string;
   onClick: () => void;
+  disabled: boolean | undefined;
 };
 
 export type BottomSheetProps = {
@@ -15,7 +16,7 @@ export type BottomSheetProps = {
   type: 'confirm' | 'choice';
 } & ActionProps;
 
-const BottomSheet = ({ children, onClick, type, label }: BottomSheetProps) => {
+const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
   const { isOpen, close } = useBottomSheetStore();
 
   if (!isOpen) return null;
@@ -38,7 +39,7 @@ const BottomSheet = ({ children, onClick, type, label }: BottomSheetProps) => {
             className='cursor-pointer'
           />
         </div>
-        <BottomSheetContent {...{ children, onClick, type, label }} />
+        <BottomSheetContent {...{ children, onClick, disabled, type, label }} />
       </div>
     </div>
   );
