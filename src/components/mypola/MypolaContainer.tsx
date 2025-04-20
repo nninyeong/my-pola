@@ -45,7 +45,7 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
         )}
       </div>
       <div className='w-full h-[300px] flex justify-center items-end relative'>
-        <Mypola level={3} />
+        <Mypola level={level} />
         <Image
           src='/assets/images/mypola/mypola-shadow.webp'
           alt='mypola-shadow'
