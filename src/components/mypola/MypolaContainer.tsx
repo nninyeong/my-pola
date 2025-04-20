@@ -6,6 +6,7 @@ import MileageBar from './MileageBar';
 import { LEVEL_POLA_NAME } from '@/constants/levelInfo';
 import WeatherIcon from './WeatherIcon';
 import Image from 'next/image';
+import Mypola from './Mypola';
 type MypolaContainerProps = {
   level: number;
   mileage: number;
@@ -44,12 +45,7 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
         )}
       </div>
       <div className='w-full h-[300px] flex justify-center items-end relative'>
-        <Image
-          src='/assets/images/mypola/mypola1.webp'
-          alt='마이폴라'
-          fill={true}
-          className='z-[5] relative object-contain'
-        />
+        <Mypola level={3} />
         <Image
           src='/assets/images/mypola/mypola-shadow.webp'
           alt='mypola-shadow'
