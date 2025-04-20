@@ -16,7 +16,7 @@ const Navigation = ({ isSignedIn, toggleMenu }: NavigationProps) => {
     { href: '/', label: '소개' },
     { href: '/challenge', label: '데일리 챌린지' },
     { href: '/mypola', label: '마이 폴라' },
-    { href: '/mypola/itemstore', label: '아이템 상점', className: 'desktop:hidden' },
+    { href: '/itemstore', label: '아이템 상점', className: 'desktop:hidden' },
     { href: '/ranking', label: '랭킹' },
   ];
 
