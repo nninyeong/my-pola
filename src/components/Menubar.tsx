@@ -2,6 +2,7 @@
 import Navigation from './Navigation';
 import { useAuthStatus } from '@/hooks/auth/useAuthStatus';
 import MenubarTitle from './MenubarTitle';
+import UserSection from './UserSection';
 
 type NavigationProps = {
   toggleMenu: () => void;
@@ -45,6 +46,7 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
         isSignedIn={isSignedIn}
         toggleMenu={toggleMenu}
       />
+      <UserSection isSignedIn={isSignedIn} />
     </div>
   );
 };

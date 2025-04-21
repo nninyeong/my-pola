@@ -13,6 +13,17 @@ export const getUserNickname = async (userId: string) => {
   return data?.nickname ?? null;
 };
 
+export const getUserPoint = async (userId: string) => {
+  const client = createClient();
+
+  const { data, error } = await client.from('users').select('point').eq('id', userId).single();
+  if (error) {
+    console.error('Failed to fetch point:', error);
+  }
+
+  return data?.point ?? null;
+};
+
 export const getUserFriends = async (userId: string): Promise<FolloweeUserType[]> => {
   const client = createClient();
 
