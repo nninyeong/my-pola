@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import QueryProvider from '@/components/providers/QueryProvider';
 import Header from '@/components/Header';
+import UserInit from '@/components/UserInit';
 
 const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
@@ -27,6 +28,7 @@ export default function RootLayout({
     >
       <body className={`${pretendard.variable} antialiased flex flex-col relative min-h-screen h-full font-pretendard`}>
         <QueryProvider>
+          <UserInit />
           <Header />
           <main className='flex-1 px-[20px] flex flex-col h-full pt-[81px] desktop:mt-0'>{children}</main>
         </QueryProvider>

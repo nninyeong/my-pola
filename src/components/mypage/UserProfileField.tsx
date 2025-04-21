@@ -19,15 +19,12 @@ const UserProfileField = ({ disabled, inputRef, error, handleBlur }: UserProfile
   const [email, setEmail] = useState('');
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchUserEmail = async () => {
       const user = await getClientUser();
       if (!user) return;
-
-      const nickname = await getUserNickname(user.id);
-      setNickname(nickname);
       setEmail(user.email!);
     };
-    fetchUserData();
+    fetchUserEmail();
   }, []);
 
   return (
