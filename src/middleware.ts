@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 
-const protectedPaths = ['/mypola', '/ranking'];
+const protectedPaths = ['/mypola', '/ranking', '/mypage'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -30,5 +30,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/mypola/:path*', '/ranking/:path*', '/challenge/:path*'],
+  matcher: ['/mypola/:path*', '/ranking/:path*', '/challenge/:path*', '/mypage/:path*'],
 };

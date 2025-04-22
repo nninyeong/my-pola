@@ -1,20 +1,22 @@
-import SignOutButton from '@/components/SignOutButton';
-import { getUserInfo } from '@/utils/supabase/auth';
-import { getUserNickname } from '@/utils/supabase/user';
-import { redirect } from 'next/navigation';
+'use client';
 
-const MyPage = async () => {
-  const user = await getUserInfo();
-  if (!user) {
-    return redirect('/signin');
-  }
+import UserProfileField from '@/components/mypage/UserProfileField';
+import { useRouter } from 'next/navigation';
 
-  const nickname = await getUserNickname(user.id);
+const MyPage = () => {
+  const router = useRouter();
 
   return (
     <>
-      <p>{nickname}님 안녕하세요</p>
-      <SignOutButton />
+      <div
+        className='flex justify-end'
+        onClick={() => router.push('/mypage/edit-nickname')}
+      >
+        <p className='font-bold text-neutral-900 text-[10px] px-[12.5px] py-[11px] border border-primary-400 rounded-[10px]'>
+          닉네임 수정하기
+        </p>
+      </div>
+      <UserProfileField disabled={true} />
     </>
   );
 };
