@@ -1,3 +1,11 @@
-export default function page() {
-  return <div>아이템 상점 페이지</div>;
+import MyItems from '@/components/itemstore/MyItems';
+import StoreItems from '@/components/itemstore/StoreItems';
+
+export default function ItemStorePage() {
+  return (
+    <>
+      <StoreItems />
+      <MyItems />
+    </>
+  );
 }

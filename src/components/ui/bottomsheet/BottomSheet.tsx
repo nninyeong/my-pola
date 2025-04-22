@@ -8,7 +8,7 @@ import BottomSheetContent from './BottomSheetContent';
 export type ActionProps = {
   label: string;
   onClick: () => void;
-  disabled: boolean | undefined;
+  disabled?: boolean;
 };
 
 export type BottomSheetProps = {
