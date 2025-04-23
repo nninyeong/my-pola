@@ -33,7 +33,10 @@ export default function FriendsList() {
   }
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex flex-col w-full desktop:w-[364px] desktop:rounded-[40px] desktop:shadow-[4px_4px_4px_0px_rgba(0,0,0,0.15)] desktop:bg-white desktop:px-[20px] desktop:py-[27px]'>
+      <div className='hidden desktop:block'>
+        <h2 className='text-[24px] text-neutral-1000 font-semibold mb-[12px]'>추가한 친구</h2>
+      </div>
       {friends.map((friend, index) => (
         <FriendItem
           key={friend.id}
