@@ -17,21 +17,14 @@ export default function DesktopOnboarding() {
               </p>
             </div>
           </div>
-          <div className='relative bg-red-100 w-[317px] h-[547px] flex flex-row justify-center items-end'>
+          <div className='relative w-[317px] h-[547px] flex flex-row justify-center items-end'>
             <Image
               src='/assets/images/mypola/mypola3.webp'
               alt='마이폴라'
               fill={true}
               className='object-contain z-[1]'
             />
-            <div className='relative w-[210px] h-[52px] mb-[60px] z-[0]'>
-              <Image
-                src='/assets/images/mypola/mypola-shadow.webp'
-                alt=''
-                fill={true}
-                className='object-contain'
-              />
-            </div>
+            <div className='relative w-[290px] h-[52px] mb-[60px] bg-neutral-400 rounded-[50%] z-[0]' />
           </div>
         </div>
       </section>
