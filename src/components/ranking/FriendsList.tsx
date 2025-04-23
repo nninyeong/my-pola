@@ -25,7 +25,7 @@ export default function FriendsList() {
   }, []);
 
   if (isLoading) {
-    return <div className='text-center py-4'>친구 정보를 불러오고 있습니다...</div>;
+    return <div className='text-center py-4 w-full'>친구 정보를 불러오고 있습니다...</div>;
   }
 
   if (friends.length === 0) {
@@ -33,7 +33,7 @@ export default function FriendsList() {
   }
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col w-full'>
       {friends.map((friend, index) => (
         <FriendItem
           key={friend.id}
