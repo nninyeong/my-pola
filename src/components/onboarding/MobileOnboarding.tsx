@@ -19,7 +19,7 @@ const ONBOARDING_DATA: { description: string; image: string | null }[] = [
 export default function MobileOnboarding() {
   SwiperCore.use([Navigation, Pagination]);
   return (
-    <div className='w-full h-full py-[30px] pb-[60px]'>
+    <div className='w-full h-full py-[30px] pb-[60px] desktop:hidden'>
       <Swiper
         loop={false}
         pagination={true}
