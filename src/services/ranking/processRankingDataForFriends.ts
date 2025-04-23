@@ -13,37 +13,29 @@ export const processRankingDataForFriends = async (
   const friendIds = new Set([currentUser.id, ...friends.map((friend) => friend.followee_id)]);
   const TOP_DISPLAY_COUNT = MAX_RANKING_COUNT - 1;
 
-  return ranking.reduce<RankingUserType[]>((rankedUsers, user, currentIndex) => {
-    const isFriendOrCurrentUser = friendIds.has(user.id);
-    if (!isFriendOrCurrentUser) return rankedUsers;
+  const friendsRanking = ranking.filter((user) => friendIds.has(user.id));
 
-    const currentRank = currentIndex + 1;
+  let friendRank = 0;
+  return friendsRanking.reduce<RankingUserType[]>((rankedUsers, user) => {
+    friendRank++;
 
-    if (currentRank <= TOP_DISPLAY_COUNT) {
+    if (friendRank <= TOP_DISPLAY_COUNT) {
       rankedUsers.push({
         ...user,
-        rank: currentRank,
+        rank: friendRank,
       });
-
       return rankedUsers;
     }
 
-    if (user.id === currentUser.id && currentRank > TOP_DISPLAY_COUNT) {
-      if (rankedUsers.length >= TOP_DISPLAY_COUNT) {
-        rankedUsers.push({
-          ...user,
-          rank: currentRank,
-        });
-      } else {
-        rankedUsers.push({
-          ...user,
-          rank: currentRank,
-        });
-      }
+    if (user.id === currentUser.id && friendRank > TOP_DISPLAY_COUNT) {
+      rankedUsers.push({
+        ...user,
+        rank: friendRank,
+      });
     } else if (rankedUsers.length < TOP_DISPLAY_COUNT) {
       rankedUsers.push({
         ...user,
-        rank: currentRank,
+        rank: friendRank,
       });
     }
 
