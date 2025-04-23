@@ -1,10 +1,10 @@
-import { getUserInfo } from '@/utils/supabase/authClient';
+import { getClientUser } from '@/utils/supabase/authClient';
 import { createClient } from '@/utils/supabase/client';
 
 export const updateNickname = async (nickname: string) => {
   const client = createClient();
 
-  const user = await getUserInfo();
+  const user = await getClientUser();
   if (!user) return;
 
   const { error } = await client.from('users').update({ nickname }).eq('id', user.id);
