@@ -62,7 +62,7 @@ export default function DesktopOnboarding() {
           </div>
         </div>
       </section>
-      <section className='w-full h-full bg-gradient-to-b from-primary-100 to-white'>
+      <section className='w-full bg-gradient-to-b from-primary-100 to-white'>
         <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px] mx-auto'>
           <h2 className='text-neutral-1000 text-[48px] font-semibold mb-[40px]'>데일리 챌린지에 도전해보세요!</h2>
           <div className='text-[24px] font-medium text-center mb-[100px]'>
