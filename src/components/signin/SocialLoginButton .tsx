@@ -2,17 +2,17 @@ import React from 'react';
 type SocialLoginButtonProps = {
   onClick: () => void;
   color: string | null;
-  label: string;
+  children: React.ReactNode;
 };
 
-const SocialLoginButton = ({ onClick, color, label }: SocialLoginButtonProps) => {
+const SocialLoginButton = ({ onClick, color, children }: SocialLoginButtonProps) => {
   // TODO: 사진 추가할 것
   return (
     <button
       onClick={onClick}
-      className={`w-[333px] h-[50px] rounded-[5px] ${color ?? `border`}`}
+      className={`relative flex justify-center items-center w-[333px] h-[50px] rounded-[5px] text-[17px] ${color ?? `border border-neutral-500`}`}
     >
-      {label}
+      {children}
     </button>
   );
 };
