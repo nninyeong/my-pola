@@ -29,7 +29,7 @@ export default function DesktopOnboarding() {
             </div>
           </div>
         </div>
-        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[837px]'>
+        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[837px] mx-auto'>
           <h2 className='text-neutral-1000 text-[48px] font-semibold mb-[40px]'>마이폴라를 소개합니다.</h2>
           <div className='text-[24px] font-medium text-center mb-[100px]'>
             <p>기후 행동의 필요성은 알지만, 실천이 어려웠다면?</p>
@@ -63,7 +63,7 @@ export default function DesktopOnboarding() {
         </div>
       </section>
       <section className='w-full h-full bg-gradient-to-b from-primary-100 to-white'>
-        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px]'>
+        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px] mx-auto'>
           <h2 className='text-neutral-1000 text-[48px] font-semibold mb-[40px]'>데일리 챌린지에 도전해보세요!</h2>
           <div className='text-[24px] font-medium text-center mb-[100px]'>
             <p>
@@ -79,7 +79,7 @@ export default function DesktopOnboarding() {
             className='object-contain'
           />
         </div>
-        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px]'>
+        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px] mx-auto'>
           <h2 className='text-neutral-1000 text-[48px] font-semibold mb-[40px]'>나만의 북극곰을 키워보세요!</h2>
           <div className='text-[24px] font-medium text-center mb-[100px]'>
             <p>챌린지를 통해 얻은 마일리지로 북극곰 Level up!</p>
@@ -93,7 +93,7 @@ export default function DesktopOnboarding() {
             className='object-contain'
           />
         </div>
-        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px]'>
+        <div className='flex flex-col justify-center items-center max-w-[1920px] h-[1690px] mx-auto'>
           <h2 className='text-neutral-1000 text-[48px] font-semibold mb-[40px]'>친구와 함께 실천해보세요!</h2>
           <div className='text-[24px] font-medium text-center mb-[100px]'>
             <p>친구를 추가하고 서로의 북극곰 레벨을 확인 할 수 있어요.</p>
