@@ -16,10 +16,12 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     <div
       className={`
     ${isMenuOpen ? 'flex' : 'hidden'}
+    fixed
+    top-0
+    right-0
     flex-col
     w-[281px]
-    h-screen
-    absolute right-0 top-0 
+    h-full
     bg-white
     shadow-lg
     z-10
