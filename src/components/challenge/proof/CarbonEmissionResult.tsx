@@ -14,7 +14,7 @@ const CarbonEmissionResult = ({ todoChallenge }: CarbonEmissionResultProps) => {
     <section className='mt-[160px] mb-[10px]'>
       <h1 className='text-[18px] font-semibold leading-[35px]'>탄소계산</h1>
 
-      <div className='flex flex-col gap-[39px] mt-[11px]'>
+      <div className='flex flex-col gap-[39px] mt-[11px] mb-[50px]'>
         <div className='flex flex-col items-center w-[333px] h-[268px] bg-primary-100 rounded-[14px] pt-[22px] shadow-custom'>
           <p className='text-[16px] font-medium text-[#4A4A68] leading-[35px] mb-[12px]'>
             내가 아낀 탄소를 확인해보세요!

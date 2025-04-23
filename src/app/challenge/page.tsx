@@ -6,6 +6,7 @@ import ChallengeDetail from '@/components/challenge/ChallengeDetail';
 import useChallenge from '@/hooks/queries/useChallenge';
 import { useChallengeSelect } from '@/hooks/queries/useChallengeSelect';
 import { useChallengeConfirm } from '@/hooks/queries/useChallengeConfirm';
+import ProofButton from '@/components/challenge/proof/ProofButton';
 
 const ChallengePage = () => {
   const { data, isLoading } = useChallenge();
@@ -21,6 +22,7 @@ const ChallengePage = () => {
         challenges={data?.challenges}
         onSelectChallenge={onSelectChallenge}
       />
+      {data.todoChallenge && <ProofButton todoChallenge={data.todoChallenge} />}
       <BottomSheet
         onClick={handleConfirmChallenge}
         disabled={!!data?.todoChallenge}
