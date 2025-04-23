@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import CancelIcon from '/public/assets/icons/CancelIcon.png';
 import React from 'react';
@@ -15,9 +17,9 @@ const Modal = ({ children }: ModalProps) => {
     <div className='flex justify-center'>
       <div
         onClick={close}
-        className='fixed inset-0 bg-black/30 z-0'
+        className='fixed inset-0 bg-black/30 z-10'
       />
-      <div className='flex flex-col justify-between top-[274px] fixed bg-white w-[304px] h-[185px] rounded-[20px] z-1 py-[16px] px-[17px]'>
+      <div className='flex flex-col justify-between top-[274px] fixed bg-white w-[304px] h-[185px] rounded-[20px] z-[11] py-[16px] px-[17px]'>
         <div className='flex justify-end'>
           <Image
             src={CancelIcon}
