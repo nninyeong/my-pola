@@ -1,10 +1,11 @@
 'use client';
 import { getClientUser } from '@/utils/supabase/authClient';
-import { getUserNickname, getUserPoint } from '@/utils/supabase/user';
+import { getUserPoint } from '@/utils/supabase/user';
 import { useEffect, useState } from 'react';
 import PrevIcon from '/public/assets/icons/PrevIcon.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import useUserStore from '@/stores/useUserStore';
 
 type MenubarTitleProps = {
   toggleMenu: () => void;
@@ -12,22 +13,21 @@ type MenubarTitleProps = {
 };
 
 const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
-  const [nickname, setNickname] = useState('');
+  const { nickname } = useUserStore();
+  const trimmed = nickname.length > 10 ? nickname.slice(0, 10) + '...' : nickname;
+
   const [point, setPoint] = useState(0);
 
   useEffect(() => {
-    const fetchNickname = async () => {
+    const fetchPoint = async () => {
       const user = await getClientUser();
       if (user) {
-        const [nickname, point] = await Promise.all([getUserNickname(user.id), getUserPoint(user.id)]);
-        const trimmed = nickname.length > 10 ? nickname.slice(0, 10) + '...' : nickname;
-
-        setNickname(trimmed);
+        const point = await getUserPoint(user.id);
         setPoint(point);
       }
     };
 
-    fetchNickname();
+    fetchPoint();
   }, []);
 
   return (
@@ -42,7 +42,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
         />
         <p className='font-pretendard font-semibold text-[17px] truncate max-w-[220px]'>
           {isSignedIn && nickname ? (
-            `${nickname}님 환영합니다!`
+            `${trimmed}님 환영합니다!`
           ) : (
             <span className='inline-block'>
               <Link
