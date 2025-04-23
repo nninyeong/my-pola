@@ -7,6 +7,7 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import FixedEllipseBackground from '../background/FixedEllipseBackground';
 
 const ONBOARDING_DATA: { description: string; image: string | null }[] = [
   { description: '탄소 절감을 실천하기 어려우셨나요?', image: '/assets/images/onboarding/mobile-onboarding-1.png' },
@@ -18,30 +19,33 @@ const ONBOARDING_DATA: { description: string; image: string | null }[] = [
 export default function MobileOnboarding() {
   SwiperCore.use([Navigation, Pagination]);
   return (
-    <Swiper
-      loop={false}
-      pagination={true}
-      spaceBetween={0}
-      slidesPerView={1}
-      className='w-full h-full'
-    >
-      {ONBOARDING_DATA.map(({ description, image }) => (
-        <SwiperSlide key={description}>
-          <div className='flex flex-col items-center justify-between w-full h-full pt-[30px] pb-[60px]'>
-            <p className='text-center text-[20px] font-semibold text-black'>{description}</p>
-            <div className='relative w-full h-full'>
-              {image && (
-                <Image
-                  src={image}
-                  alt={description}
-                  fill={true}
-                  className='object-contain'
-                />
-              )}
+    <div className='w-full h-full py-[30px] pb-[60px]'>
+      <Swiper
+        loop={false}
+        pagination={true}
+        spaceBetween={0}
+        slidesPerView={1}
+        className='w-full h-full'
+      >
+        {ONBOARDING_DATA.map(({ description, image }) => (
+          <SwiperSlide key={description}>
+            <div className='flex flex-col items-center justify-between w-full h-full pb-[60px]'>
+              <p className='text-center text-[20px] font-semibold text-black'>{description}</p>
+              <div className='relative w-full h-full'>
+                {image && (
+                  <Image
+                    src={image}
+                    alt={description}
+                    fill={true}
+                    className='object-contain'
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <FixedEllipseBackground />
+    </div>
   );
 }
