@@ -13,7 +13,7 @@ export default function RankingTab({ currentTab, type, onClick }: RankingTabProp
   return (
     <button
       onClick={onClick}
-      className={`text-[10px] leading-[10px] font-medium ${isCurrentTab ? 'text-neutral-1000' : 'text-neutral-1000/20'}`}
+      className={`text-[12px] desktop:text-[20px] leading-[12px] desktop:leading-[20px] font-medium ${isCurrentTab ? 'text-primary-400' : 'text-neutral-1000'}`}
     >
       {tabName}
     </button>
