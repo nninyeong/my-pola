@@ -1,31 +1,39 @@
-import ItemCard from './ItemCard';
+'use client';
+import { Item } from '@/types/Item.types';
+import MyItemCard from './MyItemCard';
+import UnequipItemCard from './UnequipItemCard';
+import { useUpdateEquippedItem } from '@/hooks/mutations/useUpdateEquippedItem';
 
-const MyItemList = () => {
-  const Items = true;
-  const MOCK_ITEM = {
-    title: '오로라망토',
-    description: '눈을 뗄 수 없는 핫 아이템',
-    icon_url: '',
-    image_url: '',
-    price: 200,
+type MyItemListProps = {
+  myItems: Item[];
+  equippedItemId: number;
+  userId: string;
+};
+
+const MyItemList = ({ myItems, equippedItemId, userId }: MyItemListProps) => {
+  const { mutate: updateEquippedItem } = useUpdateEquippedItem(userId);
+
+  const onClickHandler = (item: Item | null) => {
+    updateEquippedItem(item);
   };
 
   return (
     <div>
-      {Items ? (
+      {myItems.length > 0 ? (
         <div className='flex gap-[13px] overflow-x-auto whitespace-nowrap min-h-[165px] -mr-[20px] first:pl-[2px] last:pr-[20px]'>
-          <ItemCard
-            {...MOCK_ITEM}
-            showPrice={false}
-          />
-          <ItemCard
-            {...MOCK_ITEM}
-            showPrice={false}
-          />
-          <ItemCard
-            {...MOCK_ITEM}
-            showPrice={false}
-          />
+          <UnequipItemCard onClick={() => onClickHandler(null)} />
+          {myItems.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => onClickHandler(item)}
+              className='cursor-pointer'
+            >
+              <MyItemCard
+                {...item}
+                isEquippedItem={equippedItemId === item.id}
+              />
+            </div>
+          ))}
         </div>
       ) : (
         <div className='rounded-[23px] p-[1px] bg-gradient-to-b from-[#5996e0] to-[#30527A] w-[339px] h-[157px] shadow-custom'>
