@@ -8,13 +8,3 @@ export const getClientUser = async () => {
   }
   return data?.user ?? null;
 };
-
-export const getUserInfo = async () => {
-  const client = createClient();
-  const { data, error } = await client.auth.getUser();
-  if (error) {
-    console.error('Failed to fetch client user: ', error);
-  }
-
-  return data?.user ?? null;
-};
