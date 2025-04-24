@@ -13,9 +13,9 @@ const UserSection = ({ isSignedIn }: UserSectionProps) => {
 
   if (!isSignedIn) {
     return (
-      <div className='hidden desktop:flex items-center ml-[74px]'>
+      <div className='hidden desktop:flex items-center ml-[96px]'>
         <Button
-          size='small'
+          size='medium'
           variant='primary'
           onClick={() => router.push('/signin')}
         >
@@ -25,7 +25,7 @@ const UserSection = ({ isSignedIn }: UserSectionProps) => {
     );
   }
   return (
-    <div className='flex items-center ml-[74px] gap-[15px]'>
+    <div className='flex items-center ml-[39px] gap-[15px]'>
       <div className='hidden desktop:flex'>
         <Image
           src={MypageIcon}

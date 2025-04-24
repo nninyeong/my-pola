@@ -30,7 +30,9 @@ export default function RootLayout({
         <QueryProvider>
           <UserInit />
           <Header />
-          <main className='flex-1 px-[20px] flex flex-col h-full pt-[81px] desktop:mt-0'>{children}</main>
+          <main className='flex-1 px-[20px] flex flex-col h-full pt-[81px] desktop:pt-[168px] desktop:mt-0'>
+            {children}
+          </main>
         </QueryProvider>
       </body>
     </html>
