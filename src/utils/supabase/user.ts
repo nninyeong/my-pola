@@ -13,6 +13,39 @@ export const getUserNickname = async (userId: string) => {
   return data?.nickname ?? null;
 };
 
+export const getUserPoint = async (userId: string) => {
+  const client = createClient();
+
+  const { data, error } = await client.from('users').select('point').eq('id', userId).single();
+  if (error) {
+    console.error('Failed to fetch nickname:', error);
+  }
+
+  return data?.point ?? 0;
+};
+
+export const getUserItems = async (userId: string) => {
+  const client = createClient();
+
+  const { data, error } = await client.from('users').select('items').eq('id', userId).single();
+  if (error) {
+    console.error('Failed to fetch nickname:', error);
+  }
+
+  return data?.items ?? [];
+};
+
+export const getUserEquippedItemId = async (userId: string) => {
+  const client = createClient();
+
+  const { data, error } = await client.from('users').select('equipped_item_id').eq('id', userId).single();
+  if (error) {
+    console.error('Failed to fetch nickname:', error);
+  }
+
+  return data?.equipped_item_id ?? null;
+};
+
 export const getUserFriends = async (userId: string): Promise<FolloweeUserType[]> => {
   const client = createClient();
 
