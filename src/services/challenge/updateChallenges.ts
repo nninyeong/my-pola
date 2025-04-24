@@ -1,11 +1,11 @@
 import { createClient } from '@/utils/supabase/client';
-import { getUserInfo } from '@/utils/supabase/authClient';
+import { getClientUser } from '@/utils/supabase/authClient';
 import { useRouter } from 'next/navigation';
 
 export const updateCurrentChallenge = async (id: number, router: ReturnType<typeof useRouter>) => {
   const client = createClient();
 
-  const user = await getUserInfo();
+  const user = await getClientUser();
   if (!user) {
     alert('챌린지를 등록하려면 로그인이 필요합니다!');
     return router.replace('/signin');
@@ -26,7 +26,7 @@ export const updateCurrentChallenge = async (id: number, router: ReturnType<type
 export const resetDailyChallenge = async () => {
   const client = createClient();
 
-  const user = await getUserInfo();
+  const user = await getClientUser();
   if (!user) return null;
 
   const { error } = await client
@@ -42,7 +42,7 @@ export const resetDailyChallenge = async () => {
 export const updatedoneChallenge = async (id: number) => {
   const client = createClient();
 
-  const user = await getUserInfo();
+  const user = await getClientUser();
   if (!user) return null;
 
   const { data: userData, error: fetchError } = await client.from('users').select('mileage').eq('id', user.id).single();

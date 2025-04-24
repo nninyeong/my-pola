@@ -2,6 +2,7 @@
 import Navigation from './Navigation';
 import { useAuthStatus } from '@/hooks/auth/useAuthStatus';
 import MenubarTitle from './MenubarTitle';
+import UserSection from './UserSection';
 
 type NavigationProps = {
   toggleMenu: () => void;
@@ -15,10 +16,12 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     <div
       className={`
     ${isMenuOpen ? 'flex' : 'hidden'}
+    fixed
+    top-0
+    right-0
     flex-col
     w-[281px]
-    h-screen
-    absolute right-0 top-0 
+    h-full
     bg-white
     shadow-lg
     z-10
@@ -45,6 +48,7 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
         isSignedIn={isSignedIn}
         toggleMenu={toggleMenu}
       />
+      <UserSection isSignedIn={isSignedIn} />
     </div>
   );
 };
