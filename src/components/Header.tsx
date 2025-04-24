@@ -24,7 +24,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className='relative desktop:flex desktop:justify-around desktop:items-center z-10 w-full'>
+    <header className='relative desktop:flex desktop:justify-center desktop:items-center z-10 w-full'>
       {isMenuOpen && (
         <div
           onClick={toggleMenu}

@@ -27,7 +27,7 @@ const Navigation = ({ isSignedIn, toggleMenu }: NavigationProps) => {
   const links = [...baseLinks, ...authLinks];
 
   return (
-    <nav className='flex flex-col font-pretendard font-semibold text-[18px] desktop:flex desktop:flex-row desktop:font-medium desktop:gap-[70px]'>
+    <nav className='flex flex-col font-pretendard font-semibold text-[18px] desktop:flex desktop:flex-row desktop:font-medium desktop:text-[32px] desktop:gap-[70px]'>
       {links.map(({ href, label, className = '' }) => (
         <Link
           key={href}

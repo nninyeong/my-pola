@@ -15,7 +15,7 @@ const SignOutButton = () => {
       </p>
       <div className='hidden desktop:flex'>
         <Button
-          size='small'
+          size='medium'
           variant='primary'
           onClick={handleSignOut}
         >
