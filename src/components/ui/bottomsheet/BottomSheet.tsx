@@ -8,7 +8,7 @@ import BottomSheetContent from './BottomSheetContent';
 export type ActionProps = {
   label: string;
   onClick: () => void;
-  disabled: boolean | undefined;
+  disabled?: boolean;
 };
 
 export type BottomSheetProps = {
@@ -25,10 +25,10 @@ const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetPr
     <div className='flex desktop:hidden'>
       <div
         onClick={close}
-        className='fixed inset-0 bg-black/30 z-0'
+        className='fixed inset-0 bg-black/30 z-10'
       />
 
-      <div className='flex flex-col justify-between fixed bottom-0 left-0 bg-white w-full h-[502px] rounded-t-3xl z-1 py-[20px] px-[19px] transition-transform duration-300'>
+      <div className='flex flex-col justify-between fixed bottom-0 left-0 bg-white w-full h-[502px] rounded-t-3xl z-[11] py-[20px] px-[19px] transition-transform duration-300'>
         <div className='flex justify-end'>
           <Image
             src={CancelIcon}
