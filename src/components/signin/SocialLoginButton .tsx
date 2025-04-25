@@ -6,11 +6,10 @@ type SocialLoginButtonProps = {
 };
 
 const SocialLoginButton = ({ onClick, color, children }: SocialLoginButtonProps) => {
-  // TODO: 사진 추가할 것
   return (
     <button
       onClick={onClick}
-      className={`relative flex justify-center items-center w-[333px] h-[50px] rounded-[5px] text-[17px] ${color ?? `border border-neutral-500`}`}
+      className={`relative flex justify-center items-center w-[333px] h-[50px] rounded-[5px] text-[17px] ${color ?? `bg-white border border-neutral-500`}`}
     >
       {children}
     </button>
