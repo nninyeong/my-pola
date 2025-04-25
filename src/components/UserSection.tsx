@@ -26,7 +26,7 @@ const UserSection = ({ isSignedIn }: UserSectionProps) => {
   }
   return (
     <div className='flex items-center ml-[39px] gap-[15px]'>
-      <div className='hidden desktop:flex'>
+      <div className='hidden desktop:flex cursor-pointer'>
         <Image
           src={MypageIcon}
           width={42}
