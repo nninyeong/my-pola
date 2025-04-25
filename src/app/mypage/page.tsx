@@ -9,7 +9,7 @@ const MyPage = () => {
   return (
     <div className='relative w-[335px] mx-auto'>
       <div
-        className='absolute right-0 top-[2px]'
+        className='absolute right-0 top-[2px] cursor-pointer'
         onClick={() => router.push('/mypage/edit-nickname')}
       >
         <p className='bg-white font-bold text-neutral-900 text-[10px] px-[8px] py-[7px] border border-primary-400 rounded-[10px]'>
