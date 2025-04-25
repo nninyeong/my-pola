@@ -1,9 +1,9 @@
 'use client';
 
-import Modal from '@/components/ui/modal/Modal';
+import Modal from '@/components/ui/modal/InfoModal';
 import { ADD_FRIEND_RESPONSE_MAP } from '@/constants/addFriendResponse';
 import { useEffect } from 'react';
-import useModalStore from '@/stores/useModalStore';
+import useModalStore from '@/stores/useInfoModalStore';
 import FriendsList from '@/components/ranking/FriendsList';
 
 export default function Page({ searchParams }: { searchParams: { friendStatus?: string; friendName?: string } }) {
