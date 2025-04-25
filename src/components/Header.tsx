@@ -1,15 +1,30 @@
 'use client';
 import Image from 'next/image';
 import MenuIcon from '/public/assets/icons/MenuIcon.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Menubar from './Menubar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   return (
-    <header className='relative desktop:flex desktop:justify-around desktop:items-center z-10 w-full'>
+    <header className='relative desktop:flex desktop:justify-center desktop:items-center z-10 w-full'>
       {isMenuOpen && (
         <div
           onClick={toggleMenu}
