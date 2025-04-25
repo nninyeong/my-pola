@@ -1,7 +1,7 @@
 'use client';
 import { BottomSheetProps } from './BottomSheet';
 import ConfirmButton from '../buttons/ConfirmButton';
-import BottomSheetChoiceButtons from '../buttons/BottomSheetChoiceButtons';
+import ChoiceButtons from '../buttons/ChoiceButtons';
 
 const BottomSheetContent = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
   return (
@@ -11,7 +11,7 @@ const BottomSheetContent = ({ children, onClick, disabled, type, label }: Bottom
         {type === 'confirm' ? (
           <ConfirmButton {...{ onClick, label, disabled }} />
         ) : (
-          <BottomSheetChoiceButtons {...{ onClick, label, disabled }} />
+          <ChoiceButtons {...{ onClick, label, disabled }} />
         )}
       </section>
     </>
