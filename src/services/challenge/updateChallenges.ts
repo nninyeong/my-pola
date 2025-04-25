@@ -1,5 +1,5 @@
-import { createClient } from '@/utils/supabase/client';
 import { getClientUser } from '@/utils/supabase/authClient';
+import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
 export const updateCurrentChallenge = async (id: number, router: ReturnType<typeof useRouter>) => {

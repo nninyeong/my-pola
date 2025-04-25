@@ -1,6 +1,6 @@
-import { getClientUser } from '@/utils/supabase/authClient';
 import { createClient } from '@/utils/supabase/client';
 import { Challenge } from '@/types/challenge.types';
+import { getClientUser } from '@/utils/supabase/authClient';
 
 export const fetchChallenges = async (): Promise<Challenge[] | null> => {
   const client = createClient();
