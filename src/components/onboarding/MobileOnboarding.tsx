@@ -29,11 +29,11 @@ export default function MobileOnboarding() {
         slidesPerView={1}
         className='w-full h-full'
       >
-        {ONBOARDING_DATA.map(({ description, image }) => (
+        {ONBOARDING_DATA.map(({ description, image }, index) => (
           <SwiperSlide key={description}>
-            <div className='flex flex-col items-center justify-between w-full h-full pb-[60px]'>
+            <div className='relative flex flex-col items-center justify-center gap-[30px] w-full h-full pb-[60px]'>
               <p className='text-center text-[20px] font-semibold text-black'>{description}</p>
-              <div className='relative w-full h-full'>
+              <div className='relative w-full h-[400px]'>
                 {image && (
                   <Image
                     src={image}
@@ -41,6 +41,18 @@ export default function MobileOnboarding() {
                     fill={true}
                     className='object-contain'
                   />
+                )}
+              </div>
+              <div className='flex justify-center items-centerw-full h-[48px]'>
+                {index === ONBOARDING_DATA.length - 1 && (
+                  <Link href='/signin'>
+                    <Button
+                      size='medium'
+                      variant='primary'
+                    >
+                      시작하기
+                    </Button>
+                  </Link>
                 )}
               </div>
             </div>
