@@ -11,6 +11,12 @@ const config: Config = {
       screens: {
         desktop: '1440px',
       },
+      width: {
+        desktop: '1248px',
+      },
+      maxWidth: {
+        desktop: '1248px',
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',

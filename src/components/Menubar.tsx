@@ -2,6 +2,9 @@
 import Navigation from './Navigation';
 import { useAuthStatus } from '@/hooks/auth/useAuthStatus';
 import MenubarTitle from './MenubarTitle';
+import UserSection from './UserSection';
+import Image from 'next/image';
+import MyPolaLogo from '/public/assets/images/mypola-logo.webp';
 
 type NavigationProps = {
   toggleMenu: () => void;
@@ -15,10 +18,12 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     <div
       className={`
     ${isMenuOpen ? 'flex' : 'hidden'}
+    fixed
+    top-0
+    right-0
     flex-col
     w-[281px]
-    h-screen
-    absolute right-0 top-0 
+    h-full
     bg-white
     shadow-lg
     z-10
@@ -29,14 +34,24 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     desktop:flex-row
     desktop:w-full
     desktop:w-desktop
-    desktop:h-[80px]
+    desktop:h-[167px]
     desktop:justify-center
+    desktop:items-center
     desktop:shadow-none
-    desktop:bg-white/30
+    desktop:bg-white
     desktop:fixed
 
   `}
     >
+      <div className='hidden desktop:flex desktop:items-center desktop:h-[65px] desktop:w-[242px] relative desktop:mr-[145px]'>
+        <Image
+          src={MyPolaLogo}
+          alt='마이폴라 로고'
+          fill
+          className='object-cover'
+        />
+      </div>
+
       <MenubarTitle
         isSignedIn={isSignedIn}
         toggleMenu={toggleMenu}
@@ -45,6 +60,7 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
         isSignedIn={isSignedIn}
         toggleMenu={toggleMenu}
       />
+      <UserSection isSignedIn={isSignedIn} />
     </div>
   );
 };

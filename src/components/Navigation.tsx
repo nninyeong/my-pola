@@ -15,19 +15,19 @@ const Navigation = ({ isSignedIn, toggleMenu }: NavigationProps) => {
   const baseLinks: NavLink[] = [
     { href: '/', label: '소개' },
     { href: '/challenge', label: '데일리 챌린지' },
-    { href: '/mypola', label: '마이 폴라' },
+    { href: '/mypola', label: '마이폴라' },
     { href: '/itemstore', label: '아이템 상점', className: 'desktop:hidden' },
     { href: '/ranking', label: '랭킹' },
   ];
 
   const authLinks: NavLink[] = isSignedIn
-    ? [{ href: '/mypage', label: '마이페이지' }]
-    : [{ href: '/signin', label: '로그인' }];
+    ? [{ href: '/mypage', label: '마이페이지', className: 'desktop:hidden' }]
+    : [];
 
   const links = [...baseLinks, ...authLinks];
 
   return (
-    <nav className='flex flex-col font-pretendard font-semibold text-[18px] desktop:flex desktop:flex-row desktop:gap-[114px]'>
+    <nav className='flex flex-col font-pretendard font-semibold text-[18px] desktop:flex desktop:flex-row desktop:font-medium desktop:text-[32px] desktop:gap-[70px]'>
       {links.map(({ href, label, className = '' }) => (
         <Link
           key={href}

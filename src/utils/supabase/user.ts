@@ -44,7 +44,6 @@ export const getUserEquippedItemId = async (userId: string) => {
   }
 
   return data?.equipped_item_id ?? null;
-};
 
 export const getUserFriends = async (userId: string): Promise<FolloweeUserType[]> => {
   const client = createClient();
