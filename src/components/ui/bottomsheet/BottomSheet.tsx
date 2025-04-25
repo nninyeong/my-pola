@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import CancelIcon from '/public/assets/icons/CancelIcon.png';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
@@ -19,8 +19,19 @@ export type BottomSheetProps = {
 const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
   const { isOpen, close } = useBottomSheetStore();
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
 
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
   return (
     <div className='flex desktop:hidden'>
       <div
