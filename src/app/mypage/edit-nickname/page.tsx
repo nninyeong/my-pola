@@ -21,9 +21,9 @@ const EditNicknamePage = () => {
         height={19}
         alt='이전 버튼'
         onClick={() => router.back()}
-        className='fixed top-[55px]'
+        className='fixed top-[55px] desktop:hidden'
       />
-      <div className='mt-[39px]'>
+      <div className='w-[335px] mx-auto'>
         <UserProfileField
           disabled={false}
           inputRef={inputRef}

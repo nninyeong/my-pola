@@ -23,7 +23,7 @@ const UserNicknameInput = ({
   };
 
   return (
-    <div className='flex flex-col gap-[7px] mb-[20px]'>
+    <div className='flex flex-col gap-[7px] desktop:gap-[26px] mb-[20px]'>
       <h3 className='font-semibold leading-[35px]'>닉네임</h3>
       <input
         className={`flex items-center w-full h-[46px] border border-neutral-300 rounded-[10px] pl-[16px] ${disabled ? 'text-neutral-400' : 'text-black'} bg-white focus:border-[#ff3232] focus:outline-none`}
