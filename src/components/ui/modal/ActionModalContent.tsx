@@ -1,13 +1,12 @@
-'use client';
-import { BottomSheetProps } from './BottomSheet';
-import ConfirmButton from '../buttons/ConfirmButton';
 import ChoiceButtons from '../buttons/ChoiceButtons';
+import ConfirmButton from '../buttons/ConfirmButton';
+import { ActionModalProps } from './ActionModal';
 
-const BottomSheetContent = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
+const ActionModalContent = ({ children, onClick, disabled, type, label }: ActionModalProps) => {
   return (
     <>
       <section>{children}</section>
-      <section className='flex mx-auto mb-[22px] mt-[10px]'>
+      <section className='flex mx-auto mt-[10px]'>
         {type === 'confirm' ? (
           <ConfirmButton {...{ onClick, label, disabled }} />
         ) : (
@@ -18,4 +17,4 @@ const BottomSheetContent = ({ children, onClick, disabled, type, label }: Bottom
   );
 };
 
-export default BottomSheetContent;
+export default ActionModalContent;

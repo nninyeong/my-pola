@@ -1,23 +1,23 @@
 'use client';
-import React, { useEffect } from 'react';
 import Image from 'next/image';
 import CancelIcon from '/public/assets/icons/CancelIcon.png';
-import useBottomSheetStore from '@/stores/useBottomSheetStore';
-import BottomSheetContent from './BottomSheetContent';
+import { useEffect } from 'react';
+import useActionModalStore from '@/stores/useActionModalStore';
+import ActionModalContent from './ActionModalContent';
 
 export type ActionProps = {
   label: string;
   onClick: () => void;
-  disabled?: boolean;
+  disabled: boolean | undefined;
 };
 
-export type BottomSheetProps = {
+export type ActionModalProps = {
   children: React.ReactNode;
   type: 'confirm' | 'choice';
 } & ActionProps;
 
-const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetProps) => {
-  const { isOpen, close } = useBottomSheetStore();
+const ActionModal = ({ children, onClick, disabled, type, label }: ActionModalProps) => {
+  const { isOpen, close } = useActionModalStore();
 
   useEffect(() => {
     if (isOpen) {
@@ -33,14 +33,13 @@ const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetPr
 
   if (!isOpen) return null;
   return (
-    <div className='flex desktop:hidden'>
+    <div className='hidden desktop:flex justify-center'>
       <div
         onClick={close}
         className='fixed inset-0 bg-black/30 z-10'
       />
-
-      <div className='flex flex-col justify-between fixed bottom-0 left-0 bg-white w-full h-[502px] rounded-t-3xl z-[11] py-[20px] px-[19px] transition-transform duration-300'>
-        <div className='flex justify-end'>
+      <div className='flex flex-col top-[150px] fixed bg-white w-[549px] h-[526px] rounded-[50px] z-30 py-[43px] px-[43px]'>
+        <div className='absolute top-[33px] right-[43px]'>
           <Image
             src={CancelIcon}
             width={21}
@@ -50,10 +49,12 @@ const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetPr
             className='cursor-pointer'
           />
         </div>
-        <BottomSheetContent {...{ children, onClick, disabled, type, label }} />
+        <section className='flex flex-col justify-center items-center'>
+          <ActionModalContent {...{ children, onClick, disabled, type, label }} />
+        </section>
       </div>
     </div>
   );
 };
 
-export default BottomSheet;
+export default ActionModal;
