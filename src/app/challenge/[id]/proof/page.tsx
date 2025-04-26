@@ -4,11 +4,14 @@ import ChallengeComplete from '@/components/challenge/ChallengeComplete';
 import CarbonEmissionResult from '@/components/challenge/proof/CarbonEmissionResult';
 import ChallengeProofHeader from '@/components/challenge/proof/ChallengeProofHeader';
 import BottomSheet from '@/components/ui/bottomsheet/BottomSheet';
+import ActionModal from '@/components/ui/modal/ActionModal';
 import useChallenge from '@/hooks/queries/useChallenge';
 import { useChallengeComplete } from '@/hooks/queries/useChallengeComplete';
 import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const ChallengeProofPage = () => {
+  const isDesktop = useMediaQuery({ minWidth: '1440px' });
   const { data, isLoading } = useChallenge();
   const { handleCompleteChallenge } = useChallengeComplete(data?.todoChallenge ?? null);
 
@@ -21,15 +24,25 @@ const ChallengeProofPage = () => {
     <>
       <ChallengeProofHeader todoChallenge={data?.todoChallenge} />
       <CarbonEmissionResult todoChallenge={data?.todoChallenge} />
-
-      <BottomSheet
-        onClick={handleCompleteChallenge}
-        disabled={false}
-        type='confirm'
-        label={`마이폴라 바로가기`}
-      >
-        <ChallengeComplete />
-      </BottomSheet>
+      {isDesktop ? (
+        <ActionModal
+          onClick={handleCompleteChallenge}
+          disabled={false}
+          type='confirm'
+          label={`마이폴라 바로가기`}
+        >
+          <ChallengeComplete />
+        </ActionModal>
+      ) : (
+        <BottomSheet
+          onClick={handleCompleteChallenge}
+          disabled={false}
+          type='confirm'
+          label={`마이폴라 바로가기`}
+        >
+          <ChallengeComplete />
+        </BottomSheet>
+      )}
     </>
   );
 };

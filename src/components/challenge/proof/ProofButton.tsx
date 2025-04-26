@@ -1,5 +1,5 @@
 import Button from '@/components/ui/buttons/Button';
-import Modal from '@/components/ui/modal/Modal';
+import InfoModal from '@/components/ui/modal/InfoModal';
 import { useChallengeProofCheck } from '@/hooks/queries/useChallengeProofCheck';
 import { Challenge } from '@/types/challenge.types';
 
@@ -12,7 +12,7 @@ const ProofButton = ({ todoChallenge }: ProofButton) => {
 
   return (
     <>
-      <div className='mt-[83px] mb-[50px]'>
+      <div className='mt-[83px] desktop:mt-[140px] desktop:mx-auto'>
         <Button
           onClick={handleChallengeProofCheck}
           size='xlarge'
@@ -21,9 +21,9 @@ const ProofButton = ({ todoChallenge }: ProofButton) => {
           인증하기
         </Button>
       </div>
-      <Modal>
-        <p className='font-semibold mb-[10px]'>오늘의 챌린지를 완료했습니다! </p>
-      </Modal>
+      <InfoModal>
+        <p className='font-semibold mb-[10px] desktop:text-[20px]'>오늘의 챌린지를 완료했습니다! </p>
+      </InfoModal>
     </>
   );
 };

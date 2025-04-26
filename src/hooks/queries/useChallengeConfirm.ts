@@ -4,9 +4,13 @@ import { useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEYS } from './queryKeys';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
 import { useRouter } from 'next/navigation';
+import useActionModalStore from '@/stores/useActionModalStore';
+import { useMediaQuery } from 'react-responsive';
 
 export const useChallengeConfirm = (selectedChallenge: Challenge | null) => {
-  const { close } = useBottomSheetStore();
+  const isDesktop = useMediaQuery({ minWidth: '1440px' });
+  const { close: closeBottomSheet } = useBottomSheetStore();
+  const { close: closeActionpModal } = useActionModalStore();
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -15,7 +19,12 @@ export const useChallengeConfirm = (selectedChallenge: Challenge | null) => {
 
     await updateCurrentChallenge(selectedChallenge.id, router);
     queryClient.invalidateQueries({ queryKey: QUERY_KEYS.challenge() });
-    close();
+
+    if (isDesktop) {
+      closeActionpModal();
+    } else {
+      closeBottomSheet();
+    }
   };
 
   return { handleConfirmChallenge };
