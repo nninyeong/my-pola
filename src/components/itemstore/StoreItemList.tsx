@@ -10,6 +10,9 @@ import StoreItemCard from '@/components/itemstore/StoreItemCard';
 import { useUpdateMyItem } from '@/hooks/mutations/useUpdateMyItem';
 import { isPointSufficient } from '@/services/itemstore/isPointSufficient';
 import { isItemOwned } from '@/services/itemstore/isItemOwned';
+import useActionModalStore from '@/stores/useActionModalStore';
+import { useMediaQuery } from 'react-responsive';
+import ActionModal from '../ui/modal/ActionModal';
 
 type StoreItemListProps = {
   point: number;
@@ -18,14 +21,20 @@ type StoreItemListProps = {
 };
 
 const StoreItemList = ({ point, userId, myItems }: StoreItemListProps) => {
-  const { open, close } = useBottomSheetStore();
+  const isDesktop = useMediaQuery({ minWidth: '1440px' });
+  const { open: openBottomSheet, close: closeBottomSheet } = useBottomSheetStore();
+  const { open: openActionModal, close: closeActionModal } = useActionModalStore();
   const { data: storeItems, isLoading } = useStoreItems();
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const { mutate: updateMyItem } = useUpdateMyItem(userId);
 
   const onClickHandler = (item: Item) => {
     updateMyItem(item);
-    close();
+    if (isDesktop) {
+      closeActionModal();
+    } else {
+      closeBottomSheet();
+    }
   };
 
   if (isLoading || !storeItems) return '로딩 중입니다...';
@@ -38,7 +47,11 @@ const StoreItemList = ({ point, userId, myItems }: StoreItemListProps) => {
             key={item.id}
             onClick={() => {
               setSelectedItem(item);
-              open();
+              if (isDesktop) {
+                openActionModal();
+              } else {
+                openBottomSheet();
+              }
             }}
             className='cursor-pointer'
           >
@@ -46,14 +59,25 @@ const StoreItemList = ({ point, userId, myItems }: StoreItemListProps) => {
           </div>
         ))}
       </div>
-      <BottomSheet
-        onClick={() => onClickHandler(selectedItem!)}
-        type='confirm'
-        label='아이템 구매하기'
-        disabled={!selectedItem || !isPointSufficient(selectedItem, point) || isItemOwned(selectedItem, myItems)}
-      >
-        {selectedItem && <ConfirmItemPurchase selectedItem={selectedItem} />}
-      </BottomSheet>
+      {isDesktop ? (
+        <ActionModal
+          onClick={() => onClickHandler(selectedItem!)}
+          type='confirm'
+          label='아이템 구매하기'
+          disabled={!selectedItem || !isPointSufficient(selectedItem, point) || isItemOwned(selectedItem, myItems)}
+        >
+          {selectedItem && <ConfirmItemPurchase selectedItem={selectedItem} />}
+        </ActionModal>
+      ) : (
+        <BottomSheet
+          onClick={() => onClickHandler(selectedItem!)}
+          type='confirm'
+          label='아이템 구매하기'
+          disabled={!selectedItem || !isPointSufficient(selectedItem, point) || isItemOwned(selectedItem, myItems)}
+        >
+          {selectedItem && <ConfirmItemPurchase selectedItem={selectedItem} />}
+        </BottomSheet>
+      )}
     </>
   );
 };
