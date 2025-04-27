@@ -48,7 +48,7 @@ export default function DesktopMypolaContainer({ level, mileage, usernickname, p
             <WeatherIcon weather={weather || 'sunny'} />
           )}
         </div>
-        <div className='relative w-[200px] h-[350px] flex justify-center items-end mb-[20px]'>
+        <div className='relative w-[200px] h-[300px] flex justify-center items-end mb-[20px]'>
           <Mypola level={level} />
           <Image
             src='/assets/images/mypola/mypola-shadow.webp'
