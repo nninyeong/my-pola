@@ -7,7 +7,7 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import FixedEllipseBackground from '../background/FixedEllipseBackground';
+import MobileFixedEllipseBackground from '../background/MobileFixedEllipseBackground';
 import Link from 'next/link';
 import Button from '../ui/buttons/Button';
 
@@ -59,7 +59,7 @@ export default function MobileOnboarding() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <FixedEllipseBackground />
+      <MobileFixedEllipseBackground />
     </div>
   );
 }

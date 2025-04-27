@@ -1,5 +1,5 @@
 import MypolaContainer from '@/components/mypola/MypolaContainer';
-import FixedEllipseBackground from '@/components/background/FixedEllipseBackground';
+import MobileFixedEllipseBackground from '@/components/background/MobileFixedEllipseBackground';
 import { getCurrentUserData } from '@/utils/supabase/auth';
 import StoreLink from '@/components/mypola/StoreLink';
 
@@ -16,7 +16,7 @@ export default async function page() {
           usernickname={nickname}
         />
       </div>
-      <FixedEllipseBackground />
+      <MobileFixedEllipseBackground />
     </div>
   );
 }
