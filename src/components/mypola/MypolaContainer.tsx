@@ -7,12 +7,19 @@ import { LEVEL_POLA_NAME } from '@/constants/levelInfo';
 import WeatherIcon from './WeatherIcon';
 import Image from 'next/image';
 import Mypola from './Mypola';
-import { WEATHER_COLOR_MAP } from '@/constants/weather';
 
 type MypolaContainerProps = {
   level: number;
   mileage: number;
   usernickname: string;
+};
+
+const WEATHER_COLOR_MAP = {
+  sunny: 'bg-weather-802',
+  cloudy: 'bg-weather-802',
+  gloomy: 'bg-neutral-200',
+  rainy: 'bg-primary-100',
+  snowy: 'bg-primary-100',
 };
 
 export default function MypolaContainer({ level, mileage, usernickname }: MypolaContainerProps) {

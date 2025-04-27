@@ -2,7 +2,6 @@
 
 import { useWeather } from '@/hooks/queries/useWeather';
 import { useGeolocation } from '@/hooks/user/useGeolocation';
-import { WEATHER_COLOR_MAP } from '@/constants/weather';
 import StoreLink from './StoreLink';
 import Mypola from './Mypola';
 import WeatherIcon from './WeatherIcon';
@@ -15,6 +14,14 @@ type DesktopMypolaContainerProps = {
   mileage: number;
   usernickname: string;
   point: number;
+};
+
+const WEATHER_COLOR_MAP = {
+  sunny: 'bg-weather-802',
+  cloudy: 'bg-weather-802',
+  gloomy: 'bg-neutral-200',
+  rainy: 'bg-primary-100',
+  snowy: 'bg-primary-100',
 };
 
 export default function DesktopMypolaContainer({ level, mileage, usernickname, point }: DesktopMypolaContainerProps) {
