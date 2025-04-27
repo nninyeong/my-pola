@@ -16,7 +16,7 @@ const WEATHER_ICON_MAP = {
 
 export default function WeatherIcon({ weather, className }: WeatherIconProps) {
   return (
-    <div className='relative w-[120px] h-[120px]'>
+    <div className='relative w-[120px] h-[120px] desktop:w-[141px] desktop:h-[141px]'>
       <Image
         src={WEATHER_ICON_MAP[weather]}
         alt={weather}
