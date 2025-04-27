@@ -17,7 +17,7 @@ export default function Mypola({ level }: MypolaProps) {
       src={MYPOLA_IMAGE_MAP[level]}
       alt='마이폴라'
       fill={true}
-      className='z-[5] relative object-contain'
+      className='z-[5] relative object-contain object-bottom'
     />
   );
 }
