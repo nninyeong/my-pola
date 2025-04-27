@@ -1,113 +1,112 @@
 'use client';
+
 import gsap from 'gsap';
 import { Observer } from 'gsap/dist/Observer';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
+const ANIMATION_CONFIG = {
+  DURATION: 0.8,
+  DELAY: 1000,
+  SECTION_HEIGHT_OFFSET: 167, // TODO: 헤더 높이 수정하는 경우 수정 필요
+} as const;
+
+const ANIMATION_STYLE = {
+  INITIAL: { opacity: 0, y: 100 },
+  ACTIVE: { opacity: 1, y: 0 },
+  EXIT_UP: { opacity: 0, y: -100 },
+  EXIT_DOWN: { opacity: 0, y: 100 },
+} as const;
+
+type AnimationDirection = 'up' | 'down';
+
+type AnimationState = {
+  currentIndex: number;
+  isAnimating: boolean;
+};
+
 export default function DesktopOnboarding() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const handleAnimation = (
+    sections: NodeListOf<Element>,
+    direction: AnimationDirection,
+    state: AnimationState,
+    observer: Observer,
+  ) => {
+    const { currentIndex, isAnimating } = state;
+    const isFirstSection = currentIndex <= 0;
+    const isLastSection = currentIndex >= sections.length - 1;
+
+    if (isAnimating || (direction === 'up' && isFirstSection) || (direction === 'down' && isLastSection)) return;
+
+    const nextIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+    const container = containerRef.current;
+    if (!container) return;
+
+    state.isAnimating = true;
+    observer.disable();
+
+    gsap.set(sections[nextIndex], {
+      opacity: 0,
+      y: direction === 'up' ? -100 : 100,
+    });
+
+    gsap.to(sections[currentIndex], {
+      ...ANIMATION_STYLE[direction === 'up' ? 'EXIT_DOWN' : 'EXIT_UP'],
+      duration: ANIMATION_CONFIG.DURATION,
+      ease: 'power2.inOut',
+    });
+
+    gsap.to(sections[nextIndex], {
+      ...ANIMATION_STYLE.ACTIVE,
+      duration: ANIMATION_CONFIG.DURATION,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        state.currentIndex = nextIndex;
+      },
+    });
+
+    const sectionHeight = window.innerHeight - ANIMATION_CONFIG.SECTION_HEIGHT_OFFSET;
+    container.scrollTo({
+      top: nextIndex * sectionHeight,
+      behavior: 'smooth',
+    });
+
+    setTimeout(() => {
+      state.isAnimating = false;
+      observer.enable();
+    }, ANIMATION_CONFIG.DELAY);
+  };
+
   useEffect(() => {
     gsap.registerPlugin(Observer);
-
-    if (!containerRef.current) return;
-
     const container = containerRef.current;
-    const sections = container.querySelectorAll('.animating-div');
-    let currentIndex = 0;
-    const sectionHeight = window.innerHeight - 167; // vh100 - 167px
-    let isAnimating = false;
+    if (!container) return;
 
-    // 초기 상태 설정
+    const sections = container.querySelectorAll('.animating-div');
+    const animationState: AnimationState = {
+      currentIndex: 0,
+      isAnimating: false,
+    };
+
     sections.forEach((section, index) => {
       gsap.set(section, {
-        opacity: index === 0 ? 1 : 0,
-        y: index === 0 ? 0 : 100,
+        ...ANIMATION_STYLE[index === 0 ? 'ACTIVE' : 'INITIAL'],
       });
     });
 
     const observer = Observer.create({
       target: container,
-      type: 'wheel,touch',
+      type: 'wheel, scroll, touch',
       preventDefault: true,
       wheelSpeed: 0.5,
       tolerance: 50,
       lockAxis: true,
-      onDown: () => {
-        if (isAnimating || currentIndex >= sections.length - 1) return;
-        isAnimating = true;
-        observer.disable(); // 입력 막기 시작
-
-        const nextIndex = currentIndex + 1;
-
-        gsap.set(sections[nextIndex], { opacity: 0, y: 100 });
-
-        gsap.to(sections[currentIndex], {
-          opacity: 0,
-          y: -100,
-          duration: 0.8,
-          ease: 'power2.inOut',
-        });
-
-        gsap.to(sections[nextIndex], {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.inOut',
-          onComplete: () => {
-            currentIndex = nextIndex;
-          },
-        });
-
-        container.scrollTo({
-          top: nextIndex * sectionHeight,
-          behavior: 'smooth',
-        });
-
-        setTimeout(() => {
-          isAnimating = false;
-          observer.enable(); // 일정 시간 후에 다시 입력 허용
-        }, 1000); // 1초 후 허용 (원하는 시간으로 조정 가능)
-      },
-      onUp: () => {
-        if (isAnimating || currentIndex <= 0) return;
-        isAnimating = true;
-        observer.disable(); // 입력 막기 시작
-
-        const nextIndex = currentIndex - 1;
-
-        gsap.set(sections[nextIndex], { opacity: 0, y: -100 });
-
-        gsap.to(sections[currentIndex], {
-          opacity: 0,
-          y: 100,
-          duration: 0.8,
-          ease: 'power2.inOut',
-        });
-
-        gsap.to(sections[nextIndex], {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.inOut',
-          onComplete: () => {
-            currentIndex = nextIndex;
-          },
-        });
-
-        container.scrollTo({
-          top: nextIndex * sectionHeight,
-          behavior: 'smooth',
-        });
-
-        setTimeout(() => {
-          isAnimating = false;
-          observer.enable(); // 일정 시간 후에 다시 입력 허용
-        }, 1000); // 1초 후 허용 (원하는 시간으로 조정 가능)
-      },
+      onDown: () => handleAnimation(sections, 'down', animationState, observer),
+      onUp: () => handleAnimation(sections, 'up', animationState, observer),
     });
 
-    // 초기 스크롤 위치
     container.scrollTo(0, 0);
 
     return () => {
