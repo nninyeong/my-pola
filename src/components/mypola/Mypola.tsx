@@ -6,9 +6,9 @@ type MypolaProps = {
 };
 
 const MYPOLA_IMAGE_MAP: Record<typeof LEVEL, string> = {
-  1: '/assets/images/mypola/mypola1.webp',
-  2: '/assets/images/mypola/mypola2.webp',
-  3: '/assets/images/mypola/mypola3.webp',
+  1: '/assets/images/mypola/mypola1.png',
+  2: '/assets/images/mypola/mypola2.png',
+  3: '/assets/images/mypola/mypola3.png',
 } as const;
 
 export default function Mypola({ level }: MypolaProps) {
