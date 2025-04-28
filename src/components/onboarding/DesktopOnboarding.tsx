@@ -136,7 +136,7 @@ export default function DesktopOnboarding() {
             </div>
             <div className='relative w-[317px] h-[547px] flex flex-row justify-center items-end'>
               <Image
-                src='/assets/images/mypola/mypola3.webp'
+                src='/assets/images/mypola/mypola3.png'
                 alt='마이폴라'
                 fill={true}
                 className='object-contain z-[1]'
