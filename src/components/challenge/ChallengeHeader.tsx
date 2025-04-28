@@ -8,7 +8,7 @@ type ChallengeHeaderProps = {
 
 const ChallengeHeader = ({ todoChallenge }: ChallengeHeaderProps) => {
   return (
-    <section className='fixed desktop:relative flex flex-col z-5'>
+    <section className='fixed desktop:relative flex flex-col z-10'>
       <div className='px-[3px]'>
         <h2 className='text-[18px] desktop:text-[40px] font-semibold'>내가 참여중인 챌린지</h2>
         <p className='text-[10px] desktop:text-[20px] font-medium text-primary-400'>
