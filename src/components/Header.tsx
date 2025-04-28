@@ -3,8 +3,11 @@ import Image from 'next/image';
 import MenuIcon from '/public/assets/icons/MenuIcon.png';
 import { useEffect, useState } from 'react';
 import Menubar from './Menubar';
+import useActionModalStore from '@/stores/useActionModalStore';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {
+  const isDesktop = useMediaQuery({ minWidth: '1440px' });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,7 +15,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen && !isDesktop) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -21,20 +24,20 @@ const Header = () => {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isDesktop]);
 
   return (
-    <header className='relative desktop:flex desktop:justify-center desktop:items-center z-10 w-full'>
+    <header className='relative desktop:fixed desktop:top-0 desktop:left-0 desktop:z-10'>
       {isMenuOpen && (
         <div
           onClick={toggleMenu}
-          className='fixed inset-0 bg-black/30 backdrop-blur-sm z-0 desktop:hidden'
+          className='fixed inset-0 bg-black/30 backdrop-blur-sm z-[11] desktop:hidden'
         />
       )}
 
       <div
         onClick={toggleMenu}
-        className={`fixed right-0 pt-[48px] pr-[21px] desktop:hidden z-5`}
+        className={`fixed right-0 top-[48px] pr-[21px] desktop:hidden z-[12]`}
       >
         <Image
           src={MenuIcon}
