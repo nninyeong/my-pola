@@ -4,7 +4,7 @@ export default async function ChallengeLayout({ children }: { children: React.Re
       <section className='desktop:hidden fixed top-0 left-0 w-full h-[84px] bg-white z-10'>
         <h1 className='mt-[40px] text-center font-semibold text-[18px] leading-[35px]'>마이페이지</h1>
       </section>
-      <main className='pt-[64px] desktop:pt-[138px] desktop:w-desktop desktop:px-[20px]'>{children}</main>
+      <main className='pt-[64px] desktop:pt-[100px] desktop:w-desktop desktop:px-[20px]'>{children}</main>
     </div>
   );
 }
