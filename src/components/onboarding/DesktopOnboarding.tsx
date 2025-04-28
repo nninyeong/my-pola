@@ -80,6 +80,8 @@ export default function DesktopOnboarding() {
   };
 
   useEffect(() => {
+    // document.body.style.overflow = 'hidden';
+
     gsap.registerPlugin(Observer);
     const container = containerRef.current;
     if (!container) return;
@@ -110,6 +112,7 @@ export default function DesktopOnboarding() {
     container.scrollTo(0, 0);
 
     return () => {
+      // document.body.style.overflow = 'unset';
       observer.kill();
     };
   }, []);
@@ -134,14 +137,14 @@ export default function DesktopOnboarding() {
                 </p>
               </div>
             </div>
-            <div className='relative w-[317px] h-[547px] flex flex-row justify-center items-end'>
+            <div className='relative w-[300px] h-[470px] flex flex-row justify-center items-end'>
               <Image
                 src='/assets/images/mypola/mypola3.png'
                 alt='마이폴라'
                 fill={true}
-                className='object-contain z-[1]'
+                className='object-contain z-[1] object-bottom'
               />
-              <div className='relative w-[290px] h-[52px] mb-[60px] bg-neutral-400 rounded-[50%] z-[0]' />
+              <div className='w-[290px] h-[52px] bg-neutral-400 rounded-[50%] z-[0] translate-y-[26px] ' />
             </div>
           </div>
         </div>
