@@ -42,7 +42,7 @@ const ActionModal = ({ children, onClick, disabled, type, label }: ActionModalPr
     <>
       <div
         onClick={close}
-        className='fixed inset-0 bg-black/30 z-10'
+        className='fixed inset-0 bg-black/30 z-20'
       />
       <div className='flex flex-col top-[150px] left-1/2 transform -translate-x-1/2 fixed bg-white w-[549px] h-[526px] rounded-[50px] z-30 py-[43px] px-[43px]'>
         <div className='absolute top-[33px] right-[43px]'>

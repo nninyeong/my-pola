@@ -27,7 +27,7 @@ const Header = () => {
   }, [isMenuOpen, isDesktop]);
 
   return (
-    <header className='relative desktop:fixed desktop:top-0 desktop:left-0 desktop:z-10'>
+    <header className='relative desktop:fixed desktop:top-0 desktop:left-0 desktop:z-[11]'>
       {isMenuOpen && (
         <div
           onClick={toggleMenu}
