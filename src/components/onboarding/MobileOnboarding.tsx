@@ -11,6 +11,10 @@ import MobileFixedEllipseBackground from '../background/MobileFixedEllipseBackgr
 import Link from 'next/link';
 import Button from '../ui/buttons/Button';
 
+type MobileOnboardingProps = {
+  isSignedIn: boolean;
+};
+
 const ONBOARDING_DATA: { description: string; image: string | null }[] = [
   { description: '탄소 절감을 실천하기 어려우셨나요?', image: '/assets/images/onboarding/mobile-onboarding-1.png' },
   { description: '데일리 에코 챌린지를 완료하면', image: '/assets/images/onboarding/mobile-onboarding-2.png' },
@@ -18,8 +22,10 @@ const ONBOARDING_DATA: { description: string; image: string | null }[] = [
   { description: '친구와의 랭킹까지 확인할 수 있어요!', image: '/assets/images/onboarding/mobile-onboarding-4.png' },
 ];
 
-export default function MobileOnboarding() {
+export default function MobileOnboarding({ isSignedIn }: MobileOnboardingProps) {
   SwiperCore.use([Navigation, Pagination]);
+  const startButtonRoute = isSignedIn ? '/challenge' : '/signin';
+
   return (
     <div className='w-full h-full py-[30px] pb-[60px] desktop:hidden'>
       <Swiper
@@ -45,7 +51,7 @@ export default function MobileOnboarding() {
               </div>
               <div className='flex justify-center items-centerw-full h-[48px]'>
                 {index === ONBOARDING_DATA.length - 1 && (
-                  <Link href='/signin'>
+                  <Link href={startButtonRoute}>
                     <Button
                       size='medium'
                       variant='primary'
