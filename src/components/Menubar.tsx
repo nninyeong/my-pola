@@ -5,6 +5,10 @@ import MenubarTitle from './MenubarTitle';
 import UserSection from './UserSection';
 import Image from 'next/image';
 import MyPolaLogo from '/public/assets/images/mypola-logo.webp';
+import useActionModalStore from '@/stores/useActionModalStore';
+import useInfoModalStore from '@/stores/useInfoModalStore';
+import { useMediaQuery } from 'react-responsive';
+import { getScrollbarWidth } from '@/utils/getScrollbarWidth';
 
 type NavigationProps = {
   toggleMenu: () => void;
@@ -12,6 +16,9 @@ type NavigationProps = {
 };
 
 const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
+  const isDesktop = useMediaQuery({ minWidth: '1440px' });
+  const { isOpen: isOpenActionModal } = useActionModalStore();
+  const { isOpen: isOpenInfoModal } = useInfoModalStore();
   const { isSignedIn } = useAuthStatus();
 
   return (
@@ -26,7 +33,7 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     h-full
     bg-white
     shadow-lg
-    z-10
+    z-[13]
    
 
     desktop:static
@@ -40,8 +47,10 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
     desktop:shadow-none
     desktop:bg-white
     desktop:fixed
-
   `}
+      style={
+        isDesktop && (isOpenActionModal || isOpenInfoModal) ? { paddingRight: `${getScrollbarWidth()}px` } : undefined
+      }
     >
       <div className='hidden desktop:flex desktop:items-center desktop:h-[65px] desktop:w-[242px] relative desktop:mr-[145px]'>
         <Image
