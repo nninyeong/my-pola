@@ -35,9 +35,9 @@ const InfoModal = ({ children }: MobileModalProps) => {
     <div className='flex justify-center'>
       <div
         onClick={close}
-        className='fixed inset-0 bg-black/30 z-10'
+        className='fixed inset-0 bg-black/30 z-20'
       />
-      <div className='flex top-[150px] left-1/2 transform -translate-x-1/2 fixed bg-white w-[304px] desktop:w-[549px] h-[185px] desktop:h-[430px] rounded-[20px] desktop:rounded-[45px] z-[11] py-[16px] desktop:py-[30px] desktop:px-[43px] px-[17px]'>
+      <div className='flex top-[150px] left-1/2 transform -translate-x-1/2 fixed bg-white w-[304px] desktop:w-[549px] h-[185px] desktop:h-[430px] rounded-[20px] desktop:rounded-[45px] z-30 py-[16px] desktop:py-[30px] desktop:px-[43px] px-[17px]'>
         <div className='flex justify-end'>
           <div className='absolute top-[33px] right-[43px]'>
             <Image
