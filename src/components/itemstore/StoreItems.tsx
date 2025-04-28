@@ -3,11 +3,10 @@ import { Item } from '@/types/Item.types';
 
 type StoreItemsProps = {
   point: number;
-  userId: string;
-  myItems: Item[];
+  onItemSelect: (item: Item) => void;
 };
 
-const StoreItems = ({ point, userId, myItems }: StoreItemsProps) => {
+const StoreItems = ({ point, onItemSelect }: StoreItemsProps) => {
   return (
     <section className='flex flex-col mt-[36px] gap-[28px]'>
       <div>
@@ -20,11 +19,7 @@ const StoreItems = ({ point, userId, myItems }: StoreItemsProps) => {
         <p className='text-[10px] desktop:text-[20px] font-medium text-primary-400'>마이폴라 아이템을 구매해보세요!</p>
       </div>
 
-      <StoreItemList
-        point={point}
-        userId={userId}
-        myItems={myItems}
-      />
+      <StoreItemList onItemSelect={onItemSelect} />
     </section>
   );
 };
