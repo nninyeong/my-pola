@@ -14,7 +14,7 @@ const StoreItemList = ({ onItemSelect }: StoreItemListProps) => {
   if (isLoading || !storeItems) return '로딩 중입니다...';
 
   return (
-    <div className='flex gap-[13px] desktop:gap-[35px] overflow-x-auto whitespace-nowrap min-h-[165px] desktop:min-h-[429px] -mr-[20px] first:pl-[2px] last:pr-[20px]'>
+    <div className='flex gap-[13px] desktop:gap-[35px] overflow-x-auto whitespace-nowrap min-h-[165px] desktop:min-h-[429px] mr-[-20px] first:pl-[2px] last:pr-[20px]'>
       {storeItems.map((item) => (
         <div
           key={item.id}

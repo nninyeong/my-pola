@@ -20,7 +20,7 @@ const MyItemList = ({ myItems, equippedItemId, userId }: MyItemListProps) => {
   return (
     <div>
       {myItems.length > 0 ? (
-        <div className='flex gap-[13px] desktop:gap-[35px] overflow-x-auto whitespace-nowrap min-h-[165px] desktop:min-h-[429px] -mr-[20px] first:pl-[2px] last:pr-[20px]'>
+        <div className='flex gap-[13px] desktop:gap-[35px] overflow-x-auto whitespace-nowrap min-h-[165px] desktop:min-h-[429px] mr-[-20px] first:pl-[2px] last:pr-[20px]'>
           <UnequipItemCard onClick={() => onClickHandler(null)} />
           {myItems.map((item) => (
             <div
