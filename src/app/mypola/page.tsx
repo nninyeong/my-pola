@@ -1,22 +1,33 @@
 import MypolaContainer from '@/components/mypola/MypolaContainer';
-import FixedEllipseBackground from '@/components/background/FixedEllipseBackground';
+import MobileFixedEllipseBackground from '@/components/background/MobileFixedEllipseBackground';
 import { getCurrentUserData } from '@/utils/supabase/auth';
 import StoreLink from '@/components/mypola/StoreLink';
+import DesktopMypolaContainer from '@/components/mypola/DesktopMypolaContainer';
 
 export default async function page() {
   const { nickname, mileage, point, level } = await getCurrentUserData();
 
   return (
     <div className='relative flex flex-col h-full pt-[14px]'>
-      <StoreLink point={point} />
-      <div className='flex-1 mt-[8px]'>
-        <MypolaContainer
+      <div className='block desktop:hidden'>
+        <StoreLink point={point} />
+        <div className='flex-1 mt-[8px]'>
+          <MypolaContainer
+            level={level}
+            mileage={mileage}
+            usernickname={nickname}
+          />
+        </div>
+        <MobileFixedEllipseBackground />
+      </div>
+      <div className='hidden desktop:block w-full max-w-[1248px] h-full mx-auto'>
+        <DesktopMypolaContainer
           level={level}
           mileage={mileage}
           usernickname={nickname}
+          point={point}
         />
       </div>
-      <FixedEllipseBackground />
     </div>
   );
 }
