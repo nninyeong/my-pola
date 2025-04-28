@@ -37,16 +37,15 @@ const InfoModal = ({ children }: MobileModalProps) => {
         onClick={close}
         className='fixed inset-0 bg-black/30 z-20'
       />
-      <div className='flex top-[150px] left-1/2 transform -translate-x-1/2 fixed bg-white w-[304px] desktop:w-[549px] h-[185px] desktop:h-[430px] rounded-[20px] desktop:rounded-[45px] z-30 py-[16px] desktop:py-[30px] desktop:px-[43px] px-[17px]'>
-        <div className='flex justify-end'>
-          <div className='absolute top-[33px] right-[43px]'>
+      <div className='flex top-1/3 left-1/2 transform -translate-x-1/2 fixed bg-white w-[304px] desktop:w-[549px] h-[160px] desktop:h-[430px] rounded-[20px] desktop:rounded-[45px] z-30 py-[16px] desktop:py-[30px] desktop:px-[43px] px-[17px]'>
+        <div className='absolute top-[14px] right-[17px] desktop:top-[33px] desktop:right-[43px]'>
+          <div className='relative w-[16px] h-[16px] desktop:w-[21px] desktop:h-[21px]'>
             <Image
               src={CancelIcon}
-              width={21}
-              height={21}
               alt='취소 버튼'
+              fill
               onClick={close}
-              className='cursor-pointer'
+              className='object-cover cursor-pointer'
             />
           </div>
         </div>

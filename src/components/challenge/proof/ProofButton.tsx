@@ -22,7 +22,7 @@ const ProofButton = ({ todoChallenge }: ProofButton) => {
         </Button>
       </div>
       <InfoModal>
-        <p className='font-semibold mb-[10px] desktop:text-[20px]'>오늘의 챌린지를 완료했습니다! </p>
+        <p className='font-semibold desktop:text-[20px]'>오늘의 챌린지를 완료했습니다! </p>
       </InfoModal>
     </>
   );
