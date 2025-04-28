@@ -7,7 +7,10 @@ export default async function Home() {
   const isSignedIn = await getIsSignedIn();
 
   return (
-    <div className={`w-full h-[calc(100vh-${MOBILE_HEADER_HEIGHT}px)] desktop:h-full`}>
+    <div
+      className={`w-full desktop:h-full`}
+      style={{ height: `calc(100vh - ${MOBILE_HEADER_HEIGHT}px)` }}
+    >
       <MobileOnboarding isSignedIn={isSignedIn} />
       <DesktopOnboarding />
     </div>
