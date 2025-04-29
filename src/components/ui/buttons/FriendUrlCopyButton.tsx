@@ -18,7 +18,7 @@ export default function FriendUrlCopyButton({ currentUserId }: FriendUrlCopyButt
   return (
     <button
       onClick={handleCopyFriendUrl}
-      className='fixed bottom-[85px] left-1/2 -translate-x-1/2 bg-primary-300 w-[339px] desktop:w-[1035px] h-[68px] desktop:h-[164px] flex justify-around desktop:justify-center items-center rounded-[8px] desktop:rounded-[30px] desktop:px-[90px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]'
+      className='bg-primary-300 w-[339px] desktop:w-[1035px] h-[68px] desktop:h-[164px] flex justify-around desktop:justify-center items-center rounded-[8px] desktop:rounded-[30px] desktop:px-[90px] my-[20px] desktop:my-[64px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]'
     >
       <Image
         src='/assets/icons/pola-head.png'
