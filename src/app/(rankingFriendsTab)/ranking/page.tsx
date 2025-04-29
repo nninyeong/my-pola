@@ -7,7 +7,7 @@ export default async function page() {
   const currentUser = await getCurrentUserData();
 
   return (
-    <>
+    <div className='w-full'>
       <div className='desktop:hidden'>
         <Ranking currentUser={currentUser} />
         <FriendUrlCopyButton currentUserId={currentUser.id} />
@@ -23,6 +23,6 @@ export default async function page() {
         </div>
         <FriendUrlCopyButton currentUserId={currentUser.id} />
       </div>
-    </>
+    </div>
   );
 }
