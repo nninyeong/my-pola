@@ -11,7 +11,7 @@ export default async function ChallengeLayout({ children }: { children: React.Re
           <RankingFriendsPageTab href='/ranking' />
           <RankingFriendsPageTab href='/friends' />
         </div>
-        <main className='flex flex-col flex-1 gap-[50px]'>{children}</main>
+        <main className='flex flex-col items-center flex-1 gap-[50px]'>{children}</main>
       </div>
     </div>
   );
