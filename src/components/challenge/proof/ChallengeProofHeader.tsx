@@ -7,7 +7,7 @@ type ChallengeProofHeaderProps = {
 
 const ChallengeProofHeader = ({ todoChallenge }: ChallengeProofHeaderProps) => {
   return (
-    <section className='fixed desktop:relative flex flex-col gap-[15px] z-5'>
+    <section className='fixed desktop:relative flex flex-col gap-[15px] z-10'>
       <h2 className='px-[3px] text-[18px] desktop:text-[40px] font-semibold'>챌린지 인증</h2>
       <TodoChallengeCard
         todoChallenge={todoChallenge}

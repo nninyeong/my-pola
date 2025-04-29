@@ -23,7 +23,7 @@ const UserNicknameInput = ({
   };
 
   return (
-    <div className='flex flex-col gap-[7px] desktop:gap-[26px] mb-[20px]'>
+    <div className='relative flex flex-col gap-[7px] desktop:gap-[26px] mb-[20px] desktop:mb-[36px]'>
       <h3 className='font-semibold leading-[35px]'>닉네임</h3>
       <input
         className={`flex items-center w-full h-[46px] border border-neutral-300 rounded-[10px] pl-[16px] ${disabled ? 'text-neutral-400' : 'text-black'} bg-white focus:border-[#ff3232] focus:outline-none`}
@@ -36,7 +36,7 @@ const UserNicknameInput = ({
         onBlur={handleBlur}
       />
       {error && (
-        <div className='flex items-center gap-[1px]'>
+        <div className='absolute bottom-[-18px] flex items-center gap-[1px]'>
           <div className='p-[1px]'>
             <Image
               src={ErrorIcon}
