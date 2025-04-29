@@ -28,12 +28,21 @@ export default function FriendsList() {
     return <div className='text-center py-4 w-full'>친구 정보를 불러오고 있습니다...</div>;
   }
 
+  const NoFriendsMessage = () => <div className='text-center py-4'>추가된 친구가 없습니다.</div>;
+
   if (friends.length === 0) {
-    return <div className='text-center py-4'>추가된 친구가 없습니다.</div>;
+    return (
+      <div className='hidden desktop:block w-full desktop:rounded-[40px] desktop:shadow-[4px_4px_4px_0px_rgba(0,0,0,0.15)] desktop:bg-white desktop:px-[20px] desktop:py-[27px] desktop:mt-[36px]'>
+        <div className='hidden desktop:block'>
+          <h2 className='text-[24px] text-neutral-1000 font-semibold mb-[12px]'>추가한 친구</h2>
+        </div>
+        <NoFriendsMessage />
+      </div>
+    );
   }
 
   return (
-    <div className='flex flex-col w-full desktop:w-[364px] desktop:rounded-[40px] desktop:shadow-[4px_4px_4px_0px_rgba(0,0,0,0.15)] desktop:bg-white desktop:px-[20px] desktop:py-[27px] desktop:mt-[36px]'>
+    <div className='flex flex-col w-full desktop:rounded-[40px] desktop:shadow-[4px_4px_4px_0px_rgba(0,0,0,0.15)] desktop:bg-white desktop:px-[20px] desktop:py-[27px] desktop:mt-[36px]'>
       <div className='hidden desktop:block'>
         <h2 className='text-[24px] text-neutral-1000 font-semibold mb-[12px]'>추가한 친구</h2>
       </div>

@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div
       className={`w-full desktop:h-full`}
-      style={{ height: `calc(100vh - ${MOBILE_HEADER_HEIGHT}px)` }}
+      style={{ height: `calc(100dvh - ${MOBILE_HEADER_HEIGHT}px)` }}
     >
       <MobileOnboarding isSignedIn={isSignedIn} />
       <DesktopOnboarding />

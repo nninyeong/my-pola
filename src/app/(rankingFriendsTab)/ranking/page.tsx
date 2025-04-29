@@ -7,7 +7,7 @@ export default async function page() {
   const currentUser = await getCurrentUserData();
 
   return (
-    <>
+    <div className='w-full'>
       <div className='desktop:hidden'>
         <Ranking currentUser={currentUser} />
         <FriendUrlCopyButton currentUserId={currentUser.id} />
@@ -17,12 +17,12 @@ export default async function page() {
           <h2 className='text-[40px] font-semibold text-neutral-1000 w-full'>랭킹 확인</h2>
           <p className='text-[20px] font-medium text-primary-400 w-full'>나와 친구들의 랭킹을 확인해보세요!</p>
         </div>
-        <div className='flex flex-row justify-center items-start gap-[48px] w-[1200px]'>
+        <div className='flex flex-row justify-between items-start gap-[48px] w-[1200px]'>
           <Ranking currentUser={currentUser} />
           <FriendsList />
         </div>
         <FriendUrlCopyButton currentUserId={currentUser.id} />
       </div>
-    </>
+    </div>
   );
 }
