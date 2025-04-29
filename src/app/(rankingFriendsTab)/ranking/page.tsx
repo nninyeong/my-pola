@@ -1,5 +1,6 @@
 import FriendsList from '@/components/ranking/FriendsList';
 import Ranking from '@/components/ranking/Ranking';
+import FriendUrlCopyButton from '@/components/ui/buttons/FriendUrlCopyButton';
 import { getCurrentUserData } from '@/utils/supabase/auth';
 
 export default async function page() {
@@ -9,6 +10,7 @@ export default async function page() {
     <>
       <div className='desktop:hidden'>
         <Ranking currentUser={currentUser} />
+        <FriendUrlCopyButton currentUserId={currentUser.id} />
       </div>
       <div className='hidden desktop:flex flex-col justify-start items-center bg-primary-100/70 h-full pt-[80px]'>
         <div className='w-[1200px] flex flex-col justify-center items-start'>
@@ -19,6 +21,7 @@ export default async function page() {
           <Ranking currentUser={currentUser} />
           <FriendsList />
         </div>
+        <FriendUrlCopyButton currentUserId={currentUser.id} />
       </div>
     </>
   );
