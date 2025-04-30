@@ -3,7 +3,7 @@ import RankingFriendsPageTab from '@/components/ranking/RankingFriendsPageTab';
 export default async function ChallengeLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className='flex flex-col w-full h-full'>
-      <section className='flex flex-col gap-[21px] fixed w-[calc(100%+40px)] left-[-20px] top-[-20px] h-[151px] rounded-[61px] bg-primary-100 px-[41px] pb-[33px] z-[-9] desktop:hidden'>
+      <section className='flex flex-col gap-[21px] fixed w-[calc(100%+40px)] left-[-20px] top-[-20px] h-[151px] rounded-[61px] bg-primary-100 px-[41px] pb-[33px] z-[1] desktop:hidden'>
         <h1 className='pt-[60px] text-[18px] font-semibold text-center leading-[35px]'>랭킹</h1>
       </section>
       <div className='relative flex flex-col w-full h-full mt-[46px] desktop:mt-0'>
