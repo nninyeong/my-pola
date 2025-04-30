@@ -48,8 +48,8 @@ export default function Ranking({ currentUser }: RankingProps) {
   };
 
   return (
-    <div className='flex flex-col items-center w-full desktop:w-[812px]'>
-      <div className='flex flex-row w-full h-[14px] justify-start items-center gap-[4px] my-[7px] desktop:my-[12px]'>
+    <div className='flex flex-col items-center w-full desktop:w-[810px]'>
+      <div className='flex flex-row w-full h-[14px] justify-start items-center gap-[4px] mt-[14px] ml-[16px] desktop:ml-0 desktop:my-[12px]'>
         <RankingTab
           currentTab={currentTab}
           type='total'
