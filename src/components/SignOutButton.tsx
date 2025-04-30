@@ -9,7 +9,7 @@ const SignOutButton = () => {
     <>
       <p
         onClick={handleSignOut}
-        className='fixed bottom-[17px] right-[17px] justify-end items-end text-[10px] font-medium text-primary-400 leading-[35px] desktop:hidden'
+        className='cursor-pointer fixed bottom-[17px] right-[17px] justify-end items-end text-[10px] font-medium text-primary-400 leading-[35px] desktop:hidden'
       >
         로그아웃
       </p>
