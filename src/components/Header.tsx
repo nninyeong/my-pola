@@ -37,7 +37,7 @@ const Header = () => {
 
       <div
         onClick={toggleMenu}
-        className={`fixed right-0 top-[41px] pr-[21px] desktop:hidden z-[12]`}
+        className={`fixed right-0 top-[41px] pr-[21px] desktop:hidden z-[12] cursor-pointer`}
       >
         <Image
           src={MenuIcon}

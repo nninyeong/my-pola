@@ -39,6 +39,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
           height={22}
           alt='이전 버튼'
           onClick={toggleMenu}
+          className='cursor-pointer'
         />
         <p className='font-pretendard font-semibold text-[17px] truncate max-w-[220px]'>
           {isSignedIn && nickname ? (

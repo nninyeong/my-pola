@@ -5,9 +5,9 @@ export const QUERY_KEYS = {
   weather: (latitude: number, longitude: number) => ['weather', convertLatLngToGrid(latitude, longitude)],
   ranking: () => ['ranking'],
   challenge: () => ['challenge'],
-  storItems: () => ['storeItems'],
+  storeItems: () => ['storeItems'],
   myItems: (userId?: string) => ['myItems', userId],
   equippedItemId: (userId?: string) => ['equippedItemId', userId],
   point: (userId?: string) => ['point', userId],
-  clientUser: () => ['cleintUser'],
+  clientUser: () => ['clientUser'],
 };
