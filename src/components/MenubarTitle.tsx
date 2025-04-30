@@ -31,7 +31,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
   }, []);
 
   return (
-    <section className='relative flex flex-col justify-end pl-[25px] pb-[27px] h-[120px] bg-primary-100 desktop:hidden'>
+    <section className='relative flex flex-col justify-end pl-[25px] pb-[39px] h-[120px] bg-primary-100 desktop:hidden'>
       <div className='flex items-center gap-[12px] h-[35px]'>
         <Image
           src={PrevIcon}
@@ -59,7 +59,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
       </div>
 
       {isSignedIn && (
-        <p className='absolute bottom-[11px] left-[49px] text-[11px] font-medium text-primary-400'>{point}P</p>
+        <p className='absolute bottom-[23px] left-[49px] text-[11px] font-medium text-primary-400'>{point}P</p>
       )}
     </section>
   );
