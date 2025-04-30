@@ -76,5 +76,5 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: '로그인 실패' }, { status: 401 });
   }
 
-  return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}`);
+  return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/challenge`);
 }

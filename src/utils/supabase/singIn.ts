@@ -8,7 +8,7 @@ export const handleGoogleSignIn = async () => {
     await client.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.origin + 'auth/callback',
+        redirectTo: window.origin + '/auth/callback',
       },
     });
   } catch (error) {
@@ -21,7 +21,7 @@ export const handleKakaoSignIn = async () => {
     await client.auth.signInWithOAuth({
       provider: 'kakao',
       options: {
-        redirectTo: window.origin + 'auth/callback',
+        redirectTo: window.origin + '/auth/callback',
       },
     });
   } catch (error) {
