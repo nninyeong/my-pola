@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { UserType } from '@/types/user.types';
 import { getUserFriendsData } from '@/utils/supabase/user';
 import FriendItem from './FriendItem';
+import FriendContainer from './FriendContainer';
 
 export default function FriendsList() {
   const [friends, setFriends] = useState<UserType[]>([]);
@@ -29,14 +30,15 @@ export default function FriendsList() {
   }
 
   if (friends.length === 0) {
-    return <div className='text-center py-4'>추가된 친구가 없습니다.</div>;
+    return (
+      <FriendContainer>
+        <div className='text-center py-4'>추가된 친구가 없습니다.</div>
+      </FriendContainer>
+    );
   }
 
   return (
-    <div className='flex flex-col w-full desktop:w-[364px] desktop:rounded-[40px] desktop:shadow-[4px_4px_4px_0px_rgba(0,0,0,0.15)] desktop:bg-white desktop:px-[20px] desktop:py-[27px] desktop:mt-[36px]'>
-      <div className='hidden desktop:block'>
-        <h2 className='text-[24px] text-neutral-1000 font-semibold mb-[12px]'>추가한 친구</h2>
-      </div>
+    <FriendContainer>
       {friends.map((friend, index) => (
         <FriendItem
           key={friend.id}
@@ -44,6 +46,6 @@ export default function FriendsList() {
           index={index + 1}
         />
       ))}
-    </div>
+    </FriendContainer>
   );
 }
