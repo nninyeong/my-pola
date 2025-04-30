@@ -12,7 +12,10 @@ const ProofButton = ({ todoChallenge }: ProofButton) => {
 
   return (
     <>
-      <div className='mt-[83px] desktop:mt-[140px] desktop:mx-auto'>
+      <div className='flex flex-col items-center mt-[49px] desktop:mt-[140px] desktop:mx-auto'>
+        <p className='desktop:text-[14px] text-[10px] text-primary-400 font-medium leading-[35px]'>
+          오늘의 챌린지를 완료했다면 버튼을 눌러주세요!
+        </p>
         <Button
           onClick={handleChallengeProofCheck}
           size='xlarge'

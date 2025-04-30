@@ -8,7 +8,7 @@ export const handleGoogleSignIn = async () => {
     await client.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.origin + 'auth/callback',
+        redirectTo: window.origin + '/auth/callback',
       },
     });
   } catch (error) {
@@ -21,7 +21,7 @@ export const handleKakaoSignIn = async () => {
     await client.auth.signInWithOAuth({
       provider: 'kakao',
       options: {
-        redirectTo: window.origin + 'auth/callback',
+        redirectTo: window.origin + '/auth/callback',
       },
     });
   } catch (error) {
@@ -31,8 +31,9 @@ export const handleKakaoSignIn = async () => {
 
 export const handleNaverSignIn = () => {
   const state = Math.random().toString(36).substring(2);
-
-  const authUrl = `${NAVER_CONFIG.AUTH_URL}?response_type=code&client_id=${NAVER_CONFIG.CLIENT_ID}&redirect_uri=${NAVER_CONFIG.CALLBACK_URL}&state=${state}`;
+  localStorage.setItem('naver_oauth_state', state);
+  const redirectUri = `${window.origin}/auth/naver/callback`;
+  const authUrl = `${NAVER_CONFIG.AUTH_URL}?response_type=code&client_id=${NAVER_CONFIG.CLIENT_ID}&redirect_uri=${redirectUri}&state=${state}`;
 
   window.location.href = authUrl;
 };

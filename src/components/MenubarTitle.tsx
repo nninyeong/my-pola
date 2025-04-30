@@ -31,7 +31,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
   }, []);
 
   return (
-    <section className='relative flex flex-col justify-end pl-[25px] pb-[27px] h-[120px] bg-primary-100 desktop:hidden'>
+    <section className='relative flex flex-col justify-end pl-[25px] pb-[39px] h-[120px] bg-primary-100 desktop:hidden'>
       <div className='flex items-center gap-[12px] h-[35px]'>
         <Image
           src={PrevIcon}
@@ -39,6 +39,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
           height={22}
           alt='이전 버튼'
           onClick={toggleMenu}
+          className='cursor-pointer'
         />
         <p className='font-pretendard font-semibold text-[17px] truncate max-w-[220px]'>
           {isSignedIn && nickname ? (
@@ -59,7 +60,7 @@ const MenubarTitle = ({ isSignedIn, toggleMenu }: MenubarTitleProps) => {
       </div>
 
       {isSignedIn && (
-        <p className='absolute bottom-[11px] left-[49px] text-[11px] font-medium text-primary-400'>{point}P</p>
+        <p className='absolute bottom-[23px] left-[49px] text-[11px] font-medium text-primary-400'>{point}P</p>
       )}
     </section>
   );
