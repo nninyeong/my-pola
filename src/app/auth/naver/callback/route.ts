@@ -4,9 +4,12 @@ import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+  const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
   const state = searchParams.get('state');
+  const forwardedHost = request.headers.get('x-forwarded-host');
+  const isLocalEnv = process.env.NODE_ENV === 'development';
+  const redirectOrigin = isLocalEnv ? origin : forwardedHost ? `https://${forwardedHost}` : origin;
 
   if (!code) {
     return NextResponse.json({ error: '네이버 로그인 실패' }, { status: 400 });
@@ -43,9 +46,7 @@ export async function GET(request: Request) {
   if (user) {
     const provider = user.app_metadata?.provider;
     if (provider === 'kakao') {
-      return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/signin?error=social_conflict&provider=${provider}`,
-      );
+      return NextResponse.redirect(`${redirectOrigin}/signin?error=social_conflict&provider=${provider}`);
     }
   } else {
     const { data: signUpData, error: signUpError } = await supabaseAdmin.auth.signUp({
@@ -76,5 +77,5 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: '로그인 실패' }, { status: 401 });
   }
 
-  return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/challenge`);
+  return NextResponse.redirect(`${redirectOrigin}/challenge`);
 }
