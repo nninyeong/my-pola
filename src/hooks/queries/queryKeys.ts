@@ -9,5 +9,5 @@ export const QUERY_KEYS = {
   myItems: (userId?: string) => ['myItems', userId],
   equippedItemId: (userId?: string) => ['equippedItemId', userId],
   point: (userId?: string) => ['point', userId],
-  clientUser: () => ['cleintUser'],
+  clientUser: () => ['clientUser'],
 };
