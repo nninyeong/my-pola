@@ -13,7 +13,7 @@ const SignInHeader = () => {
         <Image
           src={Mypola}
           alt='마이폴라'
-          className='object-cover'
+          className='object-cover z-0'
         />
       </div>
     </section>
