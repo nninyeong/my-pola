@@ -28,7 +28,7 @@ const ChallengeCard = ({ challenge, onSelectChallenge }: ChallengeCardProps) => 
       }}
       className='flex desktop:flex-col desktop:justify-center items-center gap-[9px] desktop:gap-[41px] w-[333px] desktop:w-[308px] h-[74px] desktop:h-[331px] desktop:p-0 desktop:pt-[30px] px-[16px] py-[13px] bg-[#CADEF5]/[0.39] desktop:bg-neutral-100/[75%] rounded-[14px] desktop:rounded-[45px] desktop:border desktop:border-primary-400  shadow-custom cursor-pointer'
     >
-      <div className='relative flex w-[39px] h-[39px] desktop:w-[124px] desktop:h-[124px]'>
+      <div className='relative flex w-[45px] h-[45px] desktop:w-[124px] desktop:h-[124px]'>
         <Image
           src={challenge.icon_url}
           alt={`${challenge.title} 아이콘`}
