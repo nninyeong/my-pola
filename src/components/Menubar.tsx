@@ -9,7 +9,7 @@ import useActionModalStore from '@/stores/useActionModalStore';
 import useInfoModalStore from '@/stores/useInfoModalStore';
 import { useMediaQuery } from 'react-responsive';
 import { getScrollbarWidth } from '@/utils/getScrollbarWidth';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type NavigationProps = {
   toggleMenu: () => void;
