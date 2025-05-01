@@ -4,6 +4,7 @@ import Image from 'next/image';
 import CancelIcon from '/public/assets/icons/CancelIcon.png';
 import useBottomSheetStore from '@/stores/useBottomSheetStore';
 import BottomSheetContent from './BottomSheetContent';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export type ActionProps = {
   label: string;
@@ -31,28 +32,48 @@ const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetPr
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-  return (
-    <div className='flex desktop:hidden'>
-      <div
-        onClick={close}
-        className='fixed inset-0 bg-black/30 z-10'
-      />
+  const variants = {
+    open: {
+      y: 0,
+      transition: { duration: 0.45, ease: 'easeOut' },
+    },
+    closed: {
+      y: '100%',
+      transition: { duration: 0.45, ease: 'easeOut' },
+    },
+  };
 
-      <div className='flex flex-col justify-between fixed bottom-0 left-0 bg-white w-full h-[502px] rounded-t-3xl z-[11] py-[20px] px-[19px] transition-transform duration-300'>
-        <div className='flex justify-end'>
-          <Image
-            src={CancelIcon}
-            width={21}
-            height={21}
-            alt='취소 버튼'
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className='flex desktop:hidden'>
+          <div
             onClick={close}
-            className='cursor-pointer'
+            className='fixed inset-0 bg-black/30 z-10'
           />
+
+          <motion.div
+            initial='closed'
+            animate={isOpen ? 'open' : 'closed'}
+            exit='closed'
+            variants={variants}
+            className='flex flex-col justify-between fixed bottom-0 left-0 bg-white w-full h-[502px] rounded-t-3xl z-[11] py-[20px] px-[19px]'
+          >
+            <div className='flex justify-end'>
+              <Image
+                src={CancelIcon}
+                width={21}
+                height={21}
+                alt='취소 버튼'
+                onClick={close}
+                className='cursor-pointer'
+              />
+            </div>
+            <BottomSheetContent {...{ children, onClick, disabled, type, label }} />
+          </motion.div>
         </div>
-        <BottomSheetContent {...{ children, onClick, disabled, type, label }} />
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };
 
