@@ -35,11 +35,11 @@ const BottomSheet = ({ children, onClick, disabled, type, label }: BottomSheetPr
   const variants = {
     open: {
       y: 0,
-      transition: { duration: 0.45, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: 'easeOut' },
     },
     closed: {
       y: '100%',
-      transition: { duration: 0.45, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: 'easeOut' },
     },
   };
 
