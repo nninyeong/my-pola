@@ -5,7 +5,6 @@ import { useGeolocation } from '@/hooks/user/useGeolocation';
 import MileageBar from './MileageBar';
 import { LEVEL_POLA_NAME } from '@/constants/levelInfo';
 import WeatherIcon from './WeatherIcon';
-import Image from 'next/image';
 import Mypola from './Mypola';
 
 type MypolaContainerProps = {
@@ -45,15 +44,9 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
           <WeatherIcon weather={weather || 'sunny'} />
         )}
       </div>
-      <div className='w-full h-[300px] flex justify-center items-end relative mb-[20px]'>
+      <div className='relative w-full h-300 flex flex-row justify-center items-end'>
         <Mypola level={level} />
-        <Image
-          src='/assets/images/mypola/mypola-shadow.webp'
-          alt='mypola-shadow'
-          width={214}
-          height={130}
-          className='z-[1] absolute left-1/2 -translate-x-1/2'
-        />
+        <div className='w-[290px] h-[52px] bg-neutral-400 rounded-[50%] z-[0] translate-y-[26px] ' />
       </div>
       <div>
         <p className='font-semibold text-neutral-1000 text-[20px] text-center mb-[32px]'>
