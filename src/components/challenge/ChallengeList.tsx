@@ -9,11 +9,9 @@ type ChallengeListProps = {
 
 const ChallengeList = ({ challenges, onSelectChallenge }: ChallengeListProps) => {
   return (
-    <section className='mt-[160px] desktop:mt-[120px]'>
-      <h1 className='text-[18px] desktop:text-[40px] font-semibold leading-[35px] desktop:leading-[60px]'>
-        데일리 에코 챌린지
-      </h1>
-      <p className='text-[12px] desktop:text-[20px] font-medium text-primary-400'>
+    <section className='mt-[170px] desktop:mt-[120px]'>
+      <h1 className='text-[16px] desktop:text-[40px] font-semibold desktop:leading-[60px]'>데일리 에코 챌린지</h1>
+      <p className='text-[10px] desktop:text-[20px] font-medium text-primary-400'>
         챌린지를 누르면 방법을 확인 할 수 있어요!
       </p>
       <div className='flex flex-col desktop:flex-row justify-center gap-[19px] desktop:gap-[139px] mt-[15px] desktop:mt-[93px]'>

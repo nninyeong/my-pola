@@ -13,7 +13,7 @@ const TodoChallengeCard = ({ todoChallenge }: TodoChallengeCardProps) => {
 
   return (
     <>
-      <div className='mt-[5px] desktop:mt-[32px] w-[333px] desktop:w-[1208px] h-[74px] desktop:h-[199px] px-[16px] desktop:p-[33px] py-[13px] border border-primary-400 rounded-[14px] desktop:rounded-[45px] shadow-custom bg-neutral-100/[75%]'>
+      <div className='mt-[5px] w-[333px] h-[74px] px-[16px] pt-[13px] pb-[8px] border border-primary-400 rounded-[14px] shadow-custom bg-neutral-100/[75%] desktop:mt-[32px] desktop:w-[1208px] desktop:h-[199px] desktop:p-[33px] desktop:rounded-[45px]'>
         {isDesktop ? (
           <>
             {todoChallenge ? (
