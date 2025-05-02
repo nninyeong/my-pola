@@ -31,13 +31,13 @@ const Header = () => {
       {isMenuOpen && (
         <div
           onClick={toggleMenu}
-          className='fixed inset-0 bg-black/30 backdrop-blur-sm z-[11] desktop:hidden'
+          className='fixed inset-0 bg-black/30 backdrop-blur-sm z-[12] desktop:hidden'
         />
       )}
 
       <div
         onClick={toggleMenu}
-        className={`fixed right-0 top-[41px] pr-[21px] desktop:hidden z-[12] cursor-pointer`}
+        className={`fixed right-0 top-[41px] pr-[21px] desktop:hidden z-[13] cursor-pointer`}
       >
         <Image
           src={MenuIcon}
