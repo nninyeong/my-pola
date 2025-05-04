@@ -26,9 +26,9 @@ const ChallengeCard = ({ challenge, onSelectChallenge }: ChallengeCardProps) => 
           openBottomSheet();
         }
       }}
-      className='flex desktop:flex-col desktop:justify-center items-center gap-[9px] desktop:gap-[41px] w-[333px] desktop:w-[308px] h-[74px] desktop:h-[331px] desktop:p-0 desktop:pt-[30px] px-[16px] py-[13px] bg-[#CADEF5]/[0.39] desktop:bg-neutral-100/[75%] rounded-[14px] desktop:rounded-[45px] desktop:border desktop:border-primary-400  shadow-custom cursor-pointer'
+      className='flex desktop:flex-col desktop:justify-center items-center gap-[9px] w-[333px] h-[74px] px-[16px] py-[13px] bg-[#CADEF5]/[0.39] rounded-[14px] shadow-custom cursor-pointer desktop:gap-[30px] desktop:w-[265px] desktop:h-[286px] desktop:p-0 desktop:pt-[20px] desktop:bg-neutral-100/[75%] desktop:rounded-[45px] desktop:border desktop:border-primary-400'
     >
-      <div className='relative flex w-[45px] h-[45px] desktop:w-[124px] desktop:h-[124px]'>
+      <div className='relative flex w-[45px] h-[45px] desktop:w-[142px] desktop:h-[142px]'>
         <Image
           src={challenge.icon_url}
           alt={`${challenge.title} 아이콘`}
@@ -37,7 +37,7 @@ const ChallengeCard = ({ challenge, onSelectChallenge }: ChallengeCardProps) => 
         />
       </div>
 
-      <p className='font-medium desktop:text-[20px] desktop:w-[149px] desktop:text-center desktop:h-[60px]'>
+      <p className='font-medium desktop:text-[20px] desktop:w-[149px] desktop:text-center desktop:h-[70px]'>
         {challenge.title}
       </p>
     </div>

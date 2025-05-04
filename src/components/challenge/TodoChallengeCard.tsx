@@ -13,26 +13,26 @@ const TodoChallengeCard = ({ todoChallenge }: TodoChallengeCardProps) => {
 
   return (
     <>
-      <div className='mt-[5px] desktop:mt-[32px] w-[333px] desktop:w-[1208px] h-[74px] desktop:h-[199px] px-[16px] desktop:p-[33px] py-[13px] border border-primary-400 rounded-[14px] desktop:rounded-[45px] shadow-custom bg-neutral-100/[75%]'>
+      <div className='mt-[5px] w-[333px] h-[74px] px-[16px] pt-[8px] border border-primary-400 rounded-[14px] shadow-custom bg-neutral-100/[75%] desktop:mt-[32px] desktop:w-[1094px] desktop:h-[164px] desktop:px-[42px] desktop:pt-[24px] desktop:rounded-[45px]'>
         {isDesktop ? (
           <>
             {todoChallenge ? (
-              <div className='flex gap-[27px]'>
+              <div className='flex'>
                 <Image
                   src={todoChallenge.icon_url}
                   alt={`${todoChallenge.title} 아이콘`}
-                  width={131}
-                  height={131}
+                  width={113}
+                  height={113}
                 />
-                <div className='flex flex-col pl-[15px] pt-[19px] gap-[5px]'>
+                <div className='flex flex-col pl-[15px] pt-[10px] gap-[5px]'>
                   <p className='text-[20px] font-medium text-neutral-900 pl-[2px] leading-[35px]'>오늘의 챌린지</p>
-                  <h2 className='font-medium text-[40px] leading-[55px]'>{todoChallenge.title}</h2>
+                  <h2 className='font-medium text-[32px] leading-[55px]'>{todoChallenge.title}</h2>
                 </div>
               </div>
             ) : (
-              <div className='flex flex-col pl-[15px] pt-[19px] gap-[5px]'>
+              <div className='flex flex-col pl-[15px] pt-[10px] gap-[5px]'>
                 <p className='text-[20px] font-medium text-neutral-900 pl-[2px] leading-[35px]'>오늘의 챌린지</p>
-                <h2 className='font-medium text-[40px] leading-[55px]'>아직 참여중인 챌린지가 없습니다.</h2>
+                <h2 className='font-medium text-[32px] leading-[55px]'>아직 참여중인 챌린지가 없습니다.</h2>
               </div>
             )}
           </>
@@ -44,8 +44,8 @@ const TodoChallengeCard = ({ todoChallenge }: TodoChallengeCardProps) => {
                 <Image
                   src={todoChallenge.icon_url}
                   alt={`${todoChallenge.title} 아이콘`}
-                  width={39}
-                  height={39}
+                  width={45}
+                  height={45}
                 />
                 <h2 className='font-medium leading-[35px]'>{todoChallenge.title}</h2>
               </div>
