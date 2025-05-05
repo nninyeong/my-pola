@@ -45,7 +45,7 @@ export default function MypolaContainer({ level, mileage, usernickname, equipped
           <WeatherIcon weather={weather || 'sunny'} />
         )}
       </div>
-      <div className='relative w-full h-[300px] flex flex-row justify-center items-end'>
+      <div className='relative w-full h-[300px] flex flex-row justify-center items-end mb-[75px]'>
         <Mypola
           level={level}
           equippedItem={equippedItem}
