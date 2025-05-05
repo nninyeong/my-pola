@@ -14,6 +14,7 @@ type DesktopMypolaContainerProps = {
   mileage: number;
   usernickname: string;
   point: number;
+  equippedItem: number;
 };
 
 const WEATHER_COLOR_MAP = {
@@ -24,7 +25,13 @@ const WEATHER_COLOR_MAP = {
   snowy: 'bg-primary-100',
 };
 
-export default function DesktopMypolaContainer({ level, mileage, usernickname, point }: DesktopMypolaContainerProps) {
+export default function DesktopMypolaContainer({
+  level,
+  mileage,
+  usernickname,
+  point,
+  equippedItem,
+}: DesktopMypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -49,7 +56,10 @@ export default function DesktopMypolaContainer({ level, mileage, usernickname, p
           )}
         </div>
         <div className='relative w-[200px] h-[300px] flex justify-center items-end mb-[20px]'>
-          <Mypola level={level} />
+          <Mypola
+            level={level}
+            equippedItem={equippedItem}
+          />
           <Image
             src='/assets/images/mypola/mypola-shadow.webp'
             alt='mypola-shadow'

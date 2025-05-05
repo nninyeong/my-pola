@@ -11,6 +11,7 @@ type MypolaContainerProps = {
   level: number;
   mileage: number;
   usernickname: string;
+  equippedItem: number;
 };
 
 const WEATHER_COLOR_MAP = {
@@ -21,7 +22,7 @@ const WEATHER_COLOR_MAP = {
   snowy: 'bg-primary-100',
 };
 
-export default function MypolaContainer({ level, mileage, usernickname }: MypolaContainerProps) {
+export default function MypolaContainer({ level, mileage, usernickname, equippedItem }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -44,8 +45,11 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
           <WeatherIcon weather={weather || 'sunny'} />
         )}
       </div>
-      <div className='relative w-full h-300 flex flex-row justify-center items-end'>
-        <Mypola level={level} />
+      <div className='relative w-full h-[300px] flex flex-row justify-center items-end'>
+        <Mypola
+          level={level}
+          equippedItem={equippedItem}
+        />
         <div className='w-[290px] h-[52px] bg-neutral-400 rounded-[50%] z-[0] translate-y-[26px] ' />
       </div>
       <div>
