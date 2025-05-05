@@ -32,8 +32,11 @@ export default function MypolaContainer({ level, mileage, usernickname, equipped
         className={`fixed top-[-150px] w-full h-[514px] z-[-9] rounded-b-full ${WEATHER_COLOR_MAP[weather || 'sunny']}`}
       />
       <div className='flex justify-between w-full'>
-        <h1 className='flex flex-col justify-center items-start text-neutral-1000 font-semibold text-[20px] select-none'>
-          <span>{usernickname}님의 폴라가</span>
+        <h1 className='flex flex-col justify-center items-start text-neutral-900 font-semibold text-[16px] select-none'>
+          <p>
+            <span className='text-primary-400'>{usernickname}</span>
+            <span>님의 폴라가</span>
+          </p>
           <span>성장하고 있어요!</span>
         </h1>
 
