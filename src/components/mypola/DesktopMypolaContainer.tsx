@@ -65,7 +65,7 @@ export default function DesktopMypolaContainer({
             alt='mypola-shadow'
             width={214}
             height={130}
-            className='z-[1] absolute left-1/2 -translate-x-1/2'
+            className='z-[1] absolute left-1/2 -translate-x-1/2 translate-y-1/2'
           />
         </div>
         <div>
