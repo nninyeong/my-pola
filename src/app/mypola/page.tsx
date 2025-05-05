@@ -5,7 +5,7 @@ import StoreLink from '@/components/mypola/StoreLink';
 import DesktopMypolaContainer from '@/components/mypola/DesktopMypolaContainer';
 
 export default async function page() {
-  const { nickname, mileage, point, level, equipped_item_id } = await getCurrentUserData();
+  const { id, nickname, mileage, point, level } = await getCurrentUserData();
 
   return (
     <div className='relative flex flex-col h-full pt-[14px]'>
@@ -22,20 +22,20 @@ export default async function page() {
         </div>
         <div className='flex-1 mt-[8px]'>
           <MypolaContainer
+            id={id}
             level={level}
             mileage={mileage}
-            equippedItem={equipped_item_id}
           />
         </div>
         <MobileFixedEllipseBackground />
       </div>
       <div className='hidden desktop:block w-full max-w-[1248px] h-full mx-auto'>
         <DesktopMypolaContainer
+          id={id}
           level={level}
           mileage={mileage}
           usernickname={nickname}
           point={point}
-          equippedItem={equipped_item_id}
         />
       </div>
     </div>

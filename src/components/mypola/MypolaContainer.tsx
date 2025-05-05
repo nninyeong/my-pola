@@ -10,7 +10,7 @@ import Mypola from './Mypola';
 type MypolaContainerProps = {
   level: number;
   mileage: number;
-  equippedItem: number;
+  id: string;
 };
 
 const WEATHER_COLOR_MAP = {
@@ -21,7 +21,7 @@ const WEATHER_COLOR_MAP = {
   snowy: 'bg-primary-100',
 };
 
-export default function MypolaContainer({ level, mileage, equippedItem }: MypolaContainerProps) {
+export default function MypolaContainer({ level, mileage, id }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -41,8 +41,8 @@ export default function MypolaContainer({ level, mileage, equippedItem }: Mypola
       </div>
       <div className='relative w-full h-[300px] flex flex-row justify-center items-end mb-[75px]'>
         <Mypola
+          id={id}
           level={level}
-          equippedItem={equippedItem}
         />
         <div className='w-[290px] h-[52px] bg-neutral-400 rounded-[50%] z-[0] translate-y-[26px] ' />
       </div>
