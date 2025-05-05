@@ -50,7 +50,7 @@ const TodoChallengeCard = ({ todoChallenge }: TodoChallengeCardProps) => {
                 <h2 className='font-medium leading-[35px]'>{todoChallenge.title}</h2>
               </div>
             ) : (
-              <h2 className='font-medium leading-[35px]'>아직 참여중인 챌린지가 없습니다.</h2>
+              <h2 className='font-medium leading-[45px]'>아직 참여중인 챌린지가 없습니다.</h2>
             )}
           </>
         )}
