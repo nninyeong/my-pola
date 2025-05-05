@@ -10,7 +10,7 @@ import Mypola from './Mypola';
 type MypolaContainerProps = {
   level: number;
   mileage: number;
-  usernickname: string;
+  id: string;
 };
 
 const WEATHER_COLOR_MAP = {
@@ -21,7 +21,7 @@ const WEATHER_COLOR_MAP = {
   snowy: 'bg-primary-100',
 };
 
-export default function MypolaContainer({ level, mileage, usernickname }: MypolaContainerProps) {
+export default function MypolaContainer({ level, mileage, id }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -30,12 +30,7 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
       <div
         className={`fixed top-[-150px] w-full h-[514px] z-[-9] rounded-b-full ${WEATHER_COLOR_MAP[weather || 'sunny']}`}
       />
-      <div className='flex justify-between w-full'>
-        <h1 className='flex flex-col justify-center items-start text-neutral-1000 font-semibold text-[20px] select-none'>
-          <span>{usernickname}님의 폴라가</span>
-          <span>성장하고 있어요!</span>
-        </h1>
-
+      <div className='flex justify-end w-full'>
         {isGeolocationLoading || isWeatherLoading ? (
           <div className='w-[120px] h-[120px] flex justify-center items-center'>
             <div className='w-[60px] h-[60px] border-4 border-neutral-200 border-t-neutral-400 rounded-full animate-spin'></div>
@@ -44,8 +39,11 @@ export default function MypolaContainer({ level, mileage, usernickname }: Mypola
           <WeatherIcon weather={weather || 'sunny'} />
         )}
       </div>
-      <div className='relative w-full h-300 flex flex-row justify-center items-end'>
-        <Mypola level={level} />
+      <div className='relative w-full h-[300px] flex flex-row justify-center items-end mb-[75px]'>
+        <Mypola
+          id={id}
+          level={level}
+        />
         <div className='w-[290px] h-[52px] bg-neutral-400 rounded-[50%] z-[0] translate-y-[26px] ' />
       </div>
       <div>
