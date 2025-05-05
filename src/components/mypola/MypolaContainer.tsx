@@ -10,7 +10,6 @@ import Mypola from './Mypola';
 type MypolaContainerProps = {
   level: number;
   mileage: number;
-  usernickname: string;
   equippedItem: number;
 };
 
@@ -22,7 +21,7 @@ const WEATHER_COLOR_MAP = {
   snowy: 'bg-primary-100',
 };
 
-export default function MypolaContainer({ level, mileage, usernickname, equippedItem }: MypolaContainerProps) {
+export default function MypolaContainer({ level, mileage, equippedItem }: MypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -31,15 +30,7 @@ export default function MypolaContainer({ level, mileage, usernickname, equipped
       <div
         className={`fixed top-[-150px] w-full h-[514px] z-[-9] rounded-b-full ${WEATHER_COLOR_MAP[weather || 'sunny']}`}
       />
-      <div className='flex justify-between w-full'>
-        <h1 className='flex flex-col justify-center items-start text-neutral-900 font-semibold text-[16px] select-none'>
-          <p>
-            <span className='text-primary-400'>{usernickname}</span>
-            <span>님의 폴라가</span>
-          </p>
-          <span>성장하고 있어요!</span>
-        </h1>
-
+      <div className='flex justify-end w-full'>
         {isGeolocationLoading || isWeatherLoading ? (
           <div className='w-[120px] h-[120px] flex justify-center items-center'>
             <div className='w-[60px] h-[60px] border-4 border-neutral-200 border-t-neutral-400 rounded-full animate-spin'></div>
