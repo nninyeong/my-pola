@@ -29,7 +29,7 @@ export default async function page() {
         </div>
         <MobileFixedEllipseBackground />
       </div>
-      <div className='hidden desktop:block w-full max-w-[1248px] h-full mx-auto'>
+      <div className='hidden desktop:block w-full max-w-[1248px] h-full mx-auto py-[40px]'>
         <DesktopMypolaContainer
           id={id}
           level={level}

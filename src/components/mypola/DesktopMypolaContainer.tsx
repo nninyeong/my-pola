@@ -39,7 +39,7 @@ export default function DesktopMypolaContainer({
     <>
       <div className={`fixed top-0 left-0 w-screen h-screen z-[-9] ${WEATHER_COLOR_MAP[weather || 'sunny']}`} />
       <div className='flex flex-col justify-center items-center w-full h-full py-[40px]'>
-        <div className='flex flex-row justify-between items-center w-full'>
+        <div className='flex flex-row justify-between items-start w-full'>
           <div>
             <h2 className='text-[36px] text-neutral-1000 font-semibold'>{usernickname}님의 폴라가 성장하고 있어요!</h2>
             <p className='text-[20px] text-primary-400 font-medium'>아이템 상점에 가서 아이템을 구경해보세요!</p>
