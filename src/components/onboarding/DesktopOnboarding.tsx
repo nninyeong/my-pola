@@ -34,11 +34,11 @@ export default function DesktopOnboarding() {
           </div>
         </div>
         <div
-          className={`flex flex-col justify-center items-center gap-[20px] max-w-[1248px] mx-auto py-[20px]`}
+          className={`flex flex-col justify-start items-center max-w-[1248px] mx-auto py-[50px]`}
           style={{ height: `calc(100vh - ${DESKTOP_HEADER_HEIGHT}px)` }}
         >
-          <h2 className='text-neutral-1000 text-[36px] font-semibold'>마이폴라를 소개합니다.</h2>
-          <div className='text-[20px] font-medium text-center'>
+          <h2 className='text-neutral-1000 text-[36px] font-semibold mb-[20px]'>마이폴라를 소개합니다.</h2>
+          <div className='text-[20px] font-medium text-center mb-[80px]'>
             <p>기후 행동의 필요성은 알지만, 실천이 어려웠다면?</p>
             <p>
               마이폴라와 함께 <span className='text-primary-400'>탄소 절감</span>을 더 즐겁게 시작해보세요!
