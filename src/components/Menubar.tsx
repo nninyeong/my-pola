@@ -9,6 +9,7 @@ import useActionModalStore from '@/stores/useActionModalStore';
 import useInfoModalStore from '@/stores/useInfoModalStore';
 import { useMediaQuery } from 'react-responsive';
 import { getScrollbarWidth } from '@/utils/getScrollbarWidth';
+import { motion } from 'framer-motion';
 
 type NavigationProps = {
   toggleMenu: () => void;
@@ -21,33 +22,42 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
   const { isOpen: isOpenInfoModal } = useInfoModalStore();
   const { isSignedIn } = useAuthStatus();
 
-  return (
-    <div
-      className={`
-    ${isMenuOpen ? 'flex' : 'hidden'}
-    fixed
-    top-0
-    right-0
-    flex-col
-    w-[281px]
-    h-full
-    bg-white
-    shadow-lg
-    z-[13]
-   
+  const variants = {
+    open: { x: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+    closed: { x: '100%', transition: { duration: 0.4, ease: 'easeOut' } },
+  };
 
-    desktop:static
-    desktop:flex
-    desktop:flex-row
-    desktop:w-full
-    desktop:w-desktop
-    desktop:h-[167px]
-    desktop:justify-center
-    desktop:items-center
-    desktop:shadow-none
-    desktop:bg-white
-    desktop:fixed
-  `}
+  const actualOpenState = isDesktop ? true : isMenuOpen;
+
+  return (
+    <motion.div
+      initial='closed'
+      animate={actualOpenState ? 'open' : 'closed'}
+      exit='closeds'
+      variants={variants}
+      className='
+      fixed
+      top-0
+      right-0
+      flex-col
+      w-[281px]
+      h-full
+      bg-white
+      shadow-lg
+      z-[13]
+
+      desktop:static
+      desktop:flex
+      desktop:flex-row
+      desktop:w-full
+      desktop:w-desktop
+      desktop:h-[167px]
+      desktop:justify-center
+      desktop:items-center
+      desktop:shadow-none
+      desktop:bg-white
+      desktop:fixed
+      '
       style={
         isDesktop && (isOpenActionModal || isOpenInfoModal) ? { paddingRight: `${getScrollbarWidth()}px` } : undefined
       }
@@ -70,7 +80,7 @@ const Menubar = ({ isMenuOpen, toggleMenu }: NavigationProps) => {
         toggleMenu={toggleMenu}
       />
       <UserSection isSignedIn={isSignedIn} />
-    </div>
+    </motion.div>
   );
 };
 

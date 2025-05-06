@@ -14,6 +14,7 @@ type DesktopMypolaContainerProps = {
   mileage: number;
   usernickname: string;
   point: number;
+  id: string;
 };
 
 const WEATHER_COLOR_MAP = {
@@ -24,7 +25,13 @@ const WEATHER_COLOR_MAP = {
   snowy: 'bg-primary-100',
 };
 
-export default function DesktopMypolaContainer({ level, mileage, usernickname, point }: DesktopMypolaContainerProps) {
+export default function DesktopMypolaContainer({
+  level,
+  mileage,
+  usernickname,
+  point,
+  id,
+}: DesktopMypolaContainerProps) {
   const { position, isLoading: isGeolocationLoading } = useGeolocation();
   const { data: weather, isLoading: isWeatherLoading } = useWeather(position);
 
@@ -32,7 +39,7 @@ export default function DesktopMypolaContainer({ level, mileage, usernickname, p
     <>
       <div className={`fixed top-0 left-0 w-screen h-screen z-[-9] ${WEATHER_COLOR_MAP[weather || 'sunny']}`} />
       <div className='flex flex-col justify-center items-center w-full h-full py-[40px]'>
-        <div className='flex flex-row justify-between items-center w-full'>
+        <div className='flex flex-row justify-between items-start w-full'>
           <div>
             <h2 className='text-[36px] text-neutral-1000 font-semibold'>{usernickname}님의 폴라가 성장하고 있어요!</h2>
             <p className='text-[20px] text-primary-400 font-medium'>아이템 상점에 가서 아이템을 구경해보세요!</p>
@@ -49,13 +56,16 @@ export default function DesktopMypolaContainer({ level, mileage, usernickname, p
           )}
         </div>
         <div className='relative w-[200px] h-[300px] flex justify-center items-end mb-[20px]'>
-          <Mypola level={level} />
+          <Mypola
+            level={level}
+            id={id}
+          />
           <Image
             src='/assets/images/mypola/mypola-shadow.webp'
             alt='mypola-shadow'
             width={214}
             height={130}
-            className='z-[1] absolute left-1/2 -translate-x-1/2'
+            className='z-[1] absolute left-1/2 -translate-x-1/2 translate-y-1/2'
           />
         </div>
         <div>
