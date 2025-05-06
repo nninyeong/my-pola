@@ -15,11 +15,23 @@ type MobileOnboardingProps = {
   isSignedIn: boolean;
 };
 
-const ONBOARDING_DATA: { description: string; image: string | null }[] = [
-  { description: '탄소 절감을 실천하기 어려우셨나요?', image: '/assets/images/onboarding/mobile-onboarding-1.png' },
-  { description: '데일리 에코 챌린지를 완료하면', image: '/assets/images/onboarding/mobile-onboarding-2.png' },
-  { description: '나만의 북극곰이 성장하고', image: '/assets/images/onboarding/mobile-onboarding-3.png' },
-  { description: '친구와의 랭킹까지 확인할 수 있어요!', image: '/assets/images/onboarding/mobile-onboarding-4.png' },
+const ONBOARDING_DATA: { description: string[]; image: string | null }[] = [
+  {
+    description: ['친환경 활동, 막연하게만 느껴지셨나요?'],
+    image: '/assets/images/onboarding/mobile-onboarding-1.png',
+  },
+  {
+    description: ['매일 하나의 챌린지를 선택하고 도전해보세요!'],
+    image: '/assets/images/onboarding/mobile-onboarding-2.png',
+  },
+  {
+    description: ['챌린지를 완수하면 나만의 북극곰이 쑥쑥!'],
+    image: '/assets/images/onboarding/mobile-onboarding-3.png',
+  },
+  {
+    description: ['친구와 함께 랭킹을 공유할 수 있어요!', '즐거운 친환경 행동, 시작해볼까요?'],
+    image: '/assets/images/onboarding/mobile-onboarding-4.png',
+  },
 ];
 
 export default function MobileOnboarding({ isSignedIn }: MobileOnboardingProps) {
@@ -36,14 +48,18 @@ export default function MobileOnboarding({ isSignedIn }: MobileOnboardingProps) 
         className='w-full h-full'
       >
         {ONBOARDING_DATA.map(({ description, image }, index) => (
-          <SwiperSlide key={description}>
+          <SwiperSlide key={description[0]}>
             <div className='relative flex flex-col items-center justify-center gap-[30px] w-full h-full pb-[60px]'>
-              <p className='text-center text-[20px] font-semibold text-black'>{description}</p>
+              <div className='flex flex-col justify-center items-center h-[70px] text-center text-[16px] font-semibold text-primary-500'>
+                {description.map((text, i) => (
+                  <p key={`onboarding-description-${i}`}>{text}</p>
+                ))}
+              </div>
               <div className='relative w-full h-[400px]'>
                 {image && (
                   <Image
                     src={image}
-                    alt={description}
+                    alt={description[0]}
                     fill={true}
                     className='object-contain'
                   />
