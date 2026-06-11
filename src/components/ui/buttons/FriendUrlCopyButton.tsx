@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 type FriendUrlCopyButtonProps = {
   currentUserId: string;
@@ -11,8 +12,7 @@ export default function FriendUrlCopyButton({ currentUserId }: FriendUrlCopyButt
     const friendUrl = `${window.location.origin}/addFriend/${currentUserId}`;
     navigator.clipboard.writeText(friendUrl);
 
-    // TODO: alert or 토스트 Or 모달 확인 필요
-    alert('친구 추가 URL이 복사되었습니다.');
+    toast.success('친구 추가 URL이 복사되었습니다.');
   };
 
   return (

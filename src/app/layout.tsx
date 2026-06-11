@@ -4,6 +4,7 @@ import './globals.css';
 import QueryProvider from '@/components/providers/QueryProvider';
 import Header from '@/components/Header';
 import UserInit from '@/components/UserInit';
+import { ToastContainer } from 'react-toastify';
 
 const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
@@ -35,6 +36,11 @@ export default function RootLayout({
           <Header />
           <main className='flex-1 px-[20px] desktop:px-0 flex flex-col h-full pt-[81px] desktop:pt-[168px] desktop:mt-0'>
             {children}
+            <ToastContainer
+              position='bottom-left'
+              theme='dark'
+              limit={6}
+            />
           </main>
         </QueryProvider>
       </body>
